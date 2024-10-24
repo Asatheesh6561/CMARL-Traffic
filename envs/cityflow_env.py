@@ -558,6 +558,8 @@ class CityFlowEnv:
         self.config = config
         self.logfile = logfile
         self.seed = seed
+        self.vehicle_time_info = {}
+        self.vehicle_delays = []
 
         self.env_padding = "ENV_PADDING" in config and config["ENV_PADDING"]
 
@@ -818,13 +820,12 @@ class CityFlowEnv:
     def _average_time(self):
         return self.eng.get_average_travel_time()
 
-    def _average_delay(self, default_max_speed=16.67):
+    def _average_delay(self, max_speed=16.67):
+        if not self.vehicle_delays: return np.nan
         total_delay = 0
-        speeds = self.eng.get_vehicle_speed()
-        distances = self.eng.get_vehicle_distance()
-        for vehicle in self.eng.get_vehicles():
-            current_speed = speeds[vehicle]
-            current_distance = distances[vehicle]
+        for end_time, start_time, distance in self.vehicle_delays:
+            total_delay += (end_time - start_time) - distance/max_speed
+        return total_delay/len(self.vehicle_delays)
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
@@ -910,6 +911,17 @@ class CityFlowEnv:
                 self.update_lane_vehicles(lane_vehicles)
         for inter in self.list_intersection:
             inter.step_time()
+        
+        prev_vehicles = self.vehicle_time_info
+        cur_vehicles = set(self.eng.get_vehicles())
+        for k in cur_vehicles - prev_vehicles.keys():
+            self.vehicle_time_info[k] = [self.eng.get_current_time(), self.eng.get_vehicle_distance()[k]]
+        for k in cur_vehicles & prev_vehicles.keys():
+            self.vehicle_time_info[k][1] = self.eng.get_vehicle_distance()[k]
+        for k in prev_vehicles.keys() - cur_vehicles:
+            self.vehicle_delays.append((self.eng.get_current_time(), *self.vehicle_time_info[k]))
+
+
 
     def get_default_action(self):
         return [x.get_default_action() for x in self.list_intersection]

@@ -66,6 +66,7 @@ def main_wrapper(args):
     print(env.action_space)
     while not done:
         obs, rew, done, info = env.step(env.action_space.sample())
+        print(info["average_delay"])
         print(rew)
 
 
