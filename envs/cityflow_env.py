@@ -818,8 +818,13 @@ class CityFlowEnv:
     def _average_time(self):
         return self.eng.get_average_travel_time()
 
-    def _average_delay(self):
-        return self.eng.get_average_delay()
+    def _average_delay(self, default_max_speed=16.67):
+        total_delay = 0
+        speeds = self.eng.get_vehicle_speed()
+        distances = self.eng.get_vehicle_distance()
+        for vehicle in self.eng.get_vehicles():
+            current_speed = speeds[vehicle]
+            current_distance = distances[vehicle]
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
