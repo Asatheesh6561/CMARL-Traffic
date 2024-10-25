@@ -6,6 +6,7 @@ import shutil
 from envs.cityflow_env import CityFlowEnv
 from utils.arguments import parse_args
 from utils.log import log, loginit, logexit
+from tqdm import tqdm
 
 
 def main_wrapper(args):
@@ -64,9 +65,14 @@ def main_wrapper(args):
     done = False
     env = CityFlowEnv(args["log_folder"], args["work_folder"], args["cityflow_config"])
     print(env.action_space)
-    while not done:
-        obs, rew, done, info = env.step(env.action_space.sample())
-        print(rew)
+    start_time = time.time()
+    with tqdm(total=env.config["EPISODE_LEN"], desc="episode") as pbar:
+        while not done:
+            obs, rew, done, info = env.step(env.action_space.sample())
+            pbar.update(1)
+            pbar.set_postfix({"reward": rew})
+    end_time = time.time()
+    print("total time: ", end_time - start_time)
 
 
 if __name__ == "__main__":

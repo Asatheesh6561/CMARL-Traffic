@@ -445,7 +445,7 @@ class Intersection:
             else:
                 res += count[0] / count[1]
                 cres += 1
-        return -res / cres * weight
+        return -res / cres * weight if cres > 0 else -weight
 
     def _get_average_pressure(self, type, weight):
         lane_count = self.eng.get_lane_vehicle_count()
