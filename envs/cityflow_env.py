@@ -3,7 +3,7 @@ import numpy as np
 import json
 import sys
 import os
-from gym.spaces import MultiDiscrete
+import gym
 from utils.log import log
 from utils.utils import gzip_file
 
@@ -96,26 +96,6 @@ class TrafficSignal:
             return self.next_idx - 1
         return self.now_idx - 1
 
-    def get_roadlink_vehicle_count(self, roadlink):
-        lane_counts = self.eng.get_lane_vehicle_count()
-        waiting_counts = self.eng.get_lane_waiting_vehicle_count()
-        out = [0, 0]
-        for i in self.roadnet_info["roadlinks"][roadlink]["lanelinks"]:
-            for j in i:
-                out[0] += lane_counts[j]
-                out[1] += lane_counts[j] + waiting_counts[j]
-        return out
-
-    def get_roadlink_waiting_vehicle_count(self, roadlink):
-        lane_counts = self.eng.get_lane_vehicle_count()
-        waiting_counts = self.eng.get_lane_waiting_vehicle_count()
-        out = [0, 0]
-        for i in self.roadnet_info["roadlinks"][roadlink]["lanelinks"]:
-            for j in i:
-                out[0] += waiting_counts[j]
-                out[1] += lane_counts[j] + waiting_counts[j]
-        return out
-
     def get_state(self):
         TSflow = []
         TSwait = []
@@ -124,8 +104,8 @@ class TrafficSignal:
         TStime = self.now_time
         LaneCount = []
         for roadlink in range(len(self.roadnet_info["roadlinks"])):
-            count = self.get_roadlink_vehicle_count(roadlink)
-            wait_count = self.get_roadlink_waiting_vehicle_count(roadlink)
+            count = self.eng.get_roadlink_vehicle_count(self.ID, roadlink)
+            wait_count = self.eng.get_roadlink_waiting_vehicle_count(self.ID, roadlink)
             assert count[1] == wait_count[1], f"{count} {wait_count}"
             if count[1] == 0:
                 TSflow.append(0)
@@ -228,26 +208,6 @@ class Intersection:
             if i["startRoad"] == roadname and i["type"] == direction:
                 return num
         raise ValueError(roadname, direction)
-
-    def get_roadlink_vehicle_count(self, roadlink):
-        lane_counts = self.eng.get_lane_vehicle_count()
-        waiting_counts = self.eng.get_lane_waiting_vehicle_count()
-        out = [0, 0]
-        for i in self.roadnet_info["roadlinks"][roadlink]["lanelinks"]:
-            for j in i:
-                out[0] += lane_counts[j]
-                out[1] += lane_counts[j] + waiting_counts[j]
-        return out
-
-    def get_roadlink_waiting_vehicle_count(self, roadlink):
-        lane_counts = self.eng.get_lane_vehicle_count()
-        waiting_counts = self.eng.get_lane_waiting_vehicle_count()
-        out = [0, 0]
-        for i in self.roadnet_info["roadlinks"][roadlink]["lanelinks"]:
-            for j in i:
-                out[0] += waiting_counts[j]
-                out[1] += lane_counts[j] + waiting_counts[j]
-        return out
 
     """
        Intersection: CityFlow.list_intersections
@@ -433,13 +393,13 @@ class Intersection:
         res = 0
         cres = 0
         if type.lower() == "flow":
-            target_func = self.get_roadlink_vehicle_count
+            target_func = self.eng.get_roadlink_vehicle_count
         elif type.lower() == "wait":
-            target_func = self.get_roadlink_waiting_vehicle_count
+            target_func = self.eng.get_roadlink_waiting_vehicle_count
         else:
             raise ValueError("unknown type " + type)
         for roadlink in range(len(self.roadnet_info["roadlinks"])):
-            count = target_func(roadlink)
+            count = target_func(self.ID, roadlink)
             if count[1] == 0:
                 pass
             else:
@@ -558,8 +518,6 @@ class CityFlowEnv:
         self.config = config
         self.logfile = logfile
         self.seed = seed
-        self.vehicle_time_info = {}
-        self.vehicle_delays = []
 
         self.env_padding = "ENV_PADDING" in config and config["ENV_PADDING"]
 
@@ -760,10 +718,9 @@ class CityFlowEnv:
         return self.list_intersection[i].action_space
 
     def _set_action_space(self):
-        self.action_space = []
-        for i in range(len(self.list_intersection)):
-            self.action_space.append(self._set_action_space_one(i))
-        self.action_space = MultiDiscrete(self.action_space)
+        self.action_space = gym.spaces.MultiDiscrete(
+            [self._set_action_space_one(i) for i in range(len(self.list_intersection))]
+        )
         """
         for act in self.action_space:
             if act != self.action_space[0] and self.env_padding:
@@ -820,12 +777,8 @@ class CityFlowEnv:
     def _average_time(self):
         return self.eng.get_average_travel_time()
 
-    def _average_delay(self, max_speed=16.67):
-        if not self.vehicle_delays: return np.nan
-        total_delay = 0
-        for end_time, start_time, distance in self.vehicle_delays:
-            total_delay += (end_time - start_time) - distance/max_speed
-        return total_delay/len(self.vehicle_delays)
+    def _average_delay(self):
+        return self.eng.get_average_delay()
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
@@ -911,17 +864,6 @@ class CityFlowEnv:
                 self.update_lane_vehicles(lane_vehicles)
         for inter in self.list_intersection:
             inter.step_time()
-        
-        prev_vehicles = self.vehicle_time_info
-        cur_vehicles = set(self.eng.get_vehicles())
-        for k in cur_vehicles - prev_vehicles.keys():
-            self.vehicle_time_info[k] = [self.eng.get_current_time(), self.eng.get_vehicle_distance()[k]]
-        for k in cur_vehicles & prev_vehicles.keys():
-            self.vehicle_time_info[k][1] = self.eng.get_vehicle_distance()[k]
-        for k in prev_vehicles.keys() - cur_vehicles:
-            self.vehicle_delays.append((self.eng.get_current_time(), *self.vehicle_time_info[k]))
-
-
 
     def get_default_action(self):
         return [x.get_default_action() for x in self.list_intersection]

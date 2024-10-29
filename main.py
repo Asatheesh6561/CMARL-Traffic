@@ -6,6 +6,7 @@ import shutil
 from envs.cityflow_env import CityFlowEnv
 from utils.arguments import parse_args
 from utils.log import log, loginit, logexit
+from tqdm import tqdm
 
 
 def main_wrapper(args):
@@ -63,11 +64,13 @@ def main_wrapper(args):
     cleancheck(args)
     done = False
     env = CityFlowEnv(args["log_folder"], args["work_folder"], args["cityflow_config"])
-    print(env.action_space)
-    while not done:
-        obs, rew, done, info = env.step(env.action_space.sample())
-        print(info["average_delay"])
+    print(args["cityflow_config"]["EPISODE_LEN"])
+    for _ in tqdm(range(args["cityflow_config"]["EPISODE_LEN"]), desc="main loop"):
+        action = env.action_space.sample()
+        obs, rew, done, info = env.step(action)
         print(rew)
+        if done:
+            break
 
 
 if __name__ == "__main__":
