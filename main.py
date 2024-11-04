@@ -1,77 +1,83 @@
-import time
-import os
 import sys
-import socket
-import shutil
-from envs.cityflow_env import CityFlowEnv
-from utils.arguments import parse_args
-from utils.log import log, loginit, logexit
+import os
+from collections.abc import Mapping
+from copy import deepcopy
+import numpy as np
+import torch
+import yaml
+import pdb
+import wandb
+import warnings
+import ast
+
+from sacred import SETTINGS, Experiment
+from sacred.observers import FileStorageObserver
+from sacred.utils import apply_backspaces_and_linefeeds
+from Environment.utils.arguments import parse_args
 from tqdm import tqdm
 
+import yaml
+from MARL.run import REGISTRY as run_REGISTRY
+from MARL.utils.logging import get_logger
 
-def main_wrapper(args):
-    args = vars(parse_args(args))
-    args = loginit(args)
-    log(args, level="ALL")
-    M = args["main"]
+SETTINGS["CAPTURE_MODE"] = (
+    "fd"  # set to "no" if you want to see stdout/stderr in console
+)
+logger = get_logger()
+ex = Experiment("ctraffic")
+ex.logger = logger
+ex.captured_out_filter = apply_backspaces_and_linefeeds
 
 
-def main_wrapper(args):
-    args = vars(parse_args(args))
-    args = loginit(args)
-    log(args, level="ALL")
-    M = args["main"]
+def _get_config(config_file):
+    if config_file is not None:
+        with open(
+            config_file,
+            "r",
+        ) as f:
+            try:
+                config_dict = yaml.safe_load(f)
+            except yaml.YAMLError as exc:
+                assert False, "{} error: {}".format(config_file, exc)
+        return config_dict
+    else:
+        return {}
 
-    def cleancheck(args):
-        clean_flag = False
-        if args["clean_logs"]:
-            clean_flag = True
-            if not args["force_clean"]:
-                log(
-                    "run over, try to clean log folder `%s`. are you sure to "
-                    "clean? if not, press Ctrl+C" % args["log_folder"]
-                )
-                try:
-                    input()
-                except KeyboardInterrupt:
-                    clean_flag = False
-                except EOFError:
-                    log("got EOF, stop cleaning", level="WARN")
-                    clean_flag = False
-        lf = os.path.split(args["log_folder"])
-        if len(lf[1]) == 0:  # last folder name not split
-            lf = os.path.split(lf[0])
-        assert len(lf[1]) != 0
-        lf = lf[1]
-        os.makedirs("./results/cleaned", exist_ok=True)
-        srcfile = "%s/main.log" % args["log_folder"]
-        destfile = "./results/%s%s_%s.log" % (
-            "cleaned/" if clean_flag else "",
-            lf,
-            socket.gethostname(),
+
+@ex.main
+def main(_run, _config, _log):
+    print(_log)
+    config = deepcopy(_config)
+    np.random.seed(config["seed"])
+    torch.manual_seed(config["seed"])
+    if config["enable_wandb"]:
+        wandb.login()
+        wandb.init(
+            project=config["wandb-project-name"],
+            entity=config["wandb-entity-name"],
+            name=config["name"],
         )
-        open(destfile, "w").write(open(srcfile).read())
-        if clean_flag:
-            logexit()
-            if "linux" in sys.platform:
-                os.system("rm -r %s" % args["log_folder"])
-            else:
-                print(
-                    "[ERROR] not in linux, cannot remove log folder! please "
-                    "remove it manually."
-                )
-
-    cleancheck(args)
-    done = False
-    env = CityFlowEnv(args["log_folder"], args["work_folder"], args["cityflow_config"])
-    print(args["cityflow_config"]["EPISODE_LEN"])
-    for _ in tqdm(range(args["cityflow_config"]["EPISODE_LEN"]), desc="main loop"):
-        action = env.action_space.sample()
-        obs, rew, done, info = env.step(action)
-        print(rew)
-        if done:
-            break
+    run_REGISTRY[_config["config"]["run"]](_run, config, _log)
 
 
 if __name__ == "__main__":
-    main_wrapper(sys.argv)
+    args = sys.argv
+    if any("--config" in arg for arg in args):
+        index = -1
+        for i, arg in enumerate(args):
+            if "--config" in arg:
+                index = i
+                break
+        alg_config = _get_config(args[index].split("=")[1])
+        name = os.path.basename(args[index].split("=")[1]).split(".")[0]
+        args = args[:index] + args[index + 1 :]
+    command = args[0]
+    args = vars(parse_args(args))
+    args["config"] = alg_config
+    args["results_path"] = "/cmlscratch/anirudhs/ctraffic/results"
+    args["name"] = name
+    ex.add_config(args)
+    file_obs_path = os.path.join(args["results_path"], "sacred")
+    logger.info("Saving to FileStorageObserver in {}.".format(file_obs_path))
+    ex.observers.append(FileStorageObserver.create(file_obs_path))
+    ex.run_commandline(command)

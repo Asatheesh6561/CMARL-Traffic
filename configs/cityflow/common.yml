@@ -1,5 +1,5 @@
-ROADNET_FILE: data/roadnet.json
-FLOW_FILE: data/flow.json
+ROADNET_FILE: Environment/data/roadnet.json
+FLOW_FILE: Environment/data/flow.json
 SAVEREPLAY: True
 INTERVAL: 1.0
 MIN_ACTION_TIME: 10

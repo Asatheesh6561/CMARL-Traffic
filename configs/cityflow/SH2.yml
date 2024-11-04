@@ -2,6 +2,6 @@ includes:
   - !include configs/cityflow/common.yml
 
 EPISODE_LEN: 24000
-FLOW_FILE: data/SH2/flow.json
-ROADNET_FILE: data/SH2/roadnet.json
+FLOW_FILE: Environment/data/SH2/flow.json
+ROADNET_FILE: Environment/data/SH2/roadnet.json
 

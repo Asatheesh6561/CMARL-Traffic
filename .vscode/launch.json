@@ -6,6 +6,9 @@
     "configurations": [
 
 
+
+
+
         {
             "name": "Python Debugger: Current File",
             "type": "debugpy",
@@ -13,7 +16,7 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "console": "integratedTerminal",
-            "args": ["--cityflow-config=configs/cityflow/SH1.yml"]
+            "args": ["--cityflow-config=configs/cityflow/HZ.yml", "--config=MARL/configs/algs/ippo.yaml"]
         }
     ]
 }
