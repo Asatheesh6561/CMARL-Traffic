@@ -30,6 +30,9 @@ class TrafficSignal:
         self.flicker = False
         self.yellow_time = yellow_time
         self.phase_number = len(roadnet_info["phases"])
+        self.green_times = np.zeros(len(roadnet_info["roadlinks"]))
+        self.phase_skips = np.zeros(len(roadnet_info["phases"]))
+        #self.phase_nums = np.zeros(len(roadnet_info["phases"]))
         self._set_observation_space()
         self.action_space = self.phase_number - 1
         self.set_eng_phase()
@@ -72,7 +75,7 @@ class TrafficSignal:
             # determine phase
             if action_pattern == "switch":  # switch by order
                 if action == 0:  # keep the phase
-                    self.new_idx = self.now_idx
+                    self.next_idx = self.now_idx
                 elif action == 1:  # change to the next phase
                     self.next_idx = self.now_idx + 1
                     if self.next_idx == self.phase_number:
@@ -124,6 +127,19 @@ class TrafficSignal:
             TSgreen[roadlink] = 0
         for phase in self.roadnet_info["phases"][self.now_idx]:
             TSgreen[phase] = 1
+        for i, l in enumerate(TSgreen):
+            if l == 0: 
+                if self.green_times[i] > 0 and self.green_times[i] < 0:
+                    pass
+                    # constraint - has not spent enough time as green
+                self.green_times[i] = 0
+            else: self.green_times[i] += 1
+        if self.old_idx != self.next_idx:
+            for i in range(self.phase_number):
+                if i != self.old_idx: 
+                    self.phase_skips[i] += 1
+            self.phase_skips[self.next_idx] = 0
+        #self.phase_nums[TSphase] += 1
         envtime = self.eng.get_current_time()
         return {
             "TSflow": TSflow,
@@ -755,6 +771,23 @@ class CityFlowEnv:
 
     def _average_delay(self):
         return self.eng.get_average_delay()
+    
+    def _average_road_delay(self):
+        return self.eng.get_road_average_delay()
+    
+    def get_green_times(self):
+        for inter in self.list_intersection:
+            ts_green_times = inter.TS.green_times
+            if max(ts_green_times) > 0:
+                pass
+                # constraint - too long of time spent as green
+    
+    def get_phase_skips(self):
+        for inter in self.list_intersection:
+            ts_phase_skips = inter.TS.phase_skips
+            if max(ts_phase_skips) > 0:
+                pass
+                # constraint - too many skips of some phase
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
