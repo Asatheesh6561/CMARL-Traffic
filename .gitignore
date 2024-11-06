@@ -2,3 +2,5 @@ CityFlow/
 Environment/data/
 logs/
 results/
+__pycache__
+local_results
