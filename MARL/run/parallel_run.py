@@ -153,7 +153,7 @@ def run_sequential(args, logger):
     last_log_T = 0
     model_save_time = 0
     visual_time = 0
-    val_best_return = -np.inf
+    test_best_return = -np.inf
 
     start_time = time.time()
     last_time = start_time
@@ -180,15 +180,13 @@ def run_sequential(args, logger):
             for k, v in train_stats.items():
                 if k not in [
                     "individual_rewards",
-                    "total_rewards",
+                    "total_reward",
                     "n_episodes",
                     "ep_length",
                     "TimeLimit.truncated",
                     "current_time",
                 ]:
                     wandb_dict.update({f"train_{k}": v})
-            if args.enable_wandb:
-                wandb.log(wandb_dict, step=runner.t_env)
 
             if args.config["use_reward_normalization"]:
                 episode_batch = reward_scaler.transform(episode_batch)
@@ -231,28 +229,14 @@ def run_sequential(args, logger):
             )
             last_time = time.time()
             last_test_T = runner.t_env
-            val_stats, val_lambda_return, val_old_return = val_runner.run(
-                test_mode=True, lbda_index=0
-            )
             test_stats, test_lambda_return, test_old_return = test_runner.run(
                 test_mode=True, lbda_index=0
             )
             wandb_dict.update(
                 {
-                    "Validation Reward": np.mean(val_old_return),
                     "Test Reward": np.mean(test_old_return),
                 }
             )
-            for k, v in val_stats.items():
-                if k not in [
-                    "individual_rewards",
-                    "total_rewards",
-                    "n_episodes",
-                    "ep_length",
-                    "TimeLimit.truncated",
-                    "current_time",
-                ]:
-                    wandb_dict.update({f"val_{k}": v})
             for k, v in test_stats.items():
                 if k not in [
                     "individual_rewards",
@@ -264,19 +248,13 @@ def run_sequential(args, logger):
                 ]:
                     wandb_dict.update({f"test_{k}": v})
             test_returns.append(test_old_return)
-            if val_old_return > val_best_return:
-                val_best_return = val_old_return
-                print("new best val result : {}".format(val_old_return))
+            if test_old_return > test_best_return:
+                test_best_return = test_old_return
                 print("new test result : {}".format(test_old_return))
-                print(
-                    "Update best model, val return : {}, test return : {}".format(
-                        val_old_return, test_old_return
-                    )
-                )
 
+        # Step 4: Save Logs
         if args.enable_wandb:
             wandb.log(wandb_dict, step=runner.t_env)
-
         # Step 5: Finalize
         episode += args.config["batch_size_run"]
         if (runner.t_env - last_log_T) >= args.config["log_interval"]:

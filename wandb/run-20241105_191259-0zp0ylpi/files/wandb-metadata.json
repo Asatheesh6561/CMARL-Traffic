@@ -1,0 +1,36 @@
+{
+  "os":  "Linux-4.18.0-553.22.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python":  "3.9.0",
+  "startedAt":  "2024-11-06T00:12:59.419630Z",
+  "args":  [
+    "--cityflow-config=configs/cityflow/HZ.yml",
+    "--config=MARL/configs/algs/maddpg.yaml"
+  ],
+  "program":  "/nfshomes/anirudhs/CMARL-Traffic/main.py",
+  "codePath":  "main.py",
+  "git":  {
+    "remote":  "git@github.com:Asatheesh6561/CMARL-Traffic.git",
+    "commit":  "2a5eff0b4808bc756badf981b7bedce2617dc19a"
+  },
+  "email":  "anirudh.satheesh@gmail.com",
+  "root":  "/nfshomes/anirudhs/CMARL-Traffic",
+  "host":  "nexuscml00.umiacs.umd.edu",
+  "username":  "anirudhs",
+  "executable":  "/cmlscratch/anirudhs/miniconda/envs/ctraffic/bin/python",
+  "codePathLocal":  "main.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "41922560000",
+      "used":  "13247815680"
+    }
+  },
+  "memory":  {
+    "total":  "134636822528"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  8
+  }
+}

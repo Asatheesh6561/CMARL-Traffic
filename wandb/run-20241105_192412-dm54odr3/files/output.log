@@ -1,0 +1,221 @@
+[INFO 19:24:13] main Experiment Parameters:
+|                                      | HyperParameter Value                  |
+|:-------------------------------------|:--------------------------------------|
+| CM_selected_inner                    |                                       |
+| NM_lane_embedding_size               | 32                                    |
+| NM_phase_loss_weight                 | 0                                     |
+| NM_phase_loss_with_replay            | False                                 |
+| NM_road_predict_hidden               | 32                                    |
+| NM_scale_by_lane_number              | False                                 |
+| NM_volume_loss_weight                | 0                                     |
+| agent                                |                                       |
+| cityflow_log                         |                                       |
+| config.accumulated_episodes          | 1                                     |
+| config.action_selector               | epsilon_greedy                        |
+| config.actor_input_seq_str           | o_la                                  |
+| config.agent                         | n_rnn                                 |
+| config.agent_output_type             | pi_logits                             |
+| config.batch_size                    | 1                                     |
+| config.batch_size_run                | 1                                     |
+| config.buffer_cpu_only               | True                                  |
+| config.buffer_size                   | 200                                   |
+| config.checkpoint_path               |                                       |
+| config.critic_input_seq_str          | o                                     |
+| config.critic_type                   | maddpg_critic                         |
+| config.epsilon_anneal_time           | 50000                                 |
+| config.epsilon_finish                | 0.05                                  |
+| config.epsilon_start                 | 1.0                                   |
+| config.evaluate                      | False                                 |
+| config.gamma                         | 0.985                                 |
+| config.grad_norm_clip                | 5                                     |
+| config.hidden_dim                    | 128                                   |
+| config.learner                       | maddpg_learner                        |
+| config.learner_log_interval          | 10000                                 |
+| config.local_results_path            | /cmlscratch/anirudhs/cmarl_traffic    |
+| config.log_interval                  | 10000                                 |
+| config.lr                            | 0.0005                                |
+| config.mac                           | maddpg_mac                            |
+| config.mini_epochs                   | 1                                     |
+| config.n_lambda                      | 51                                    |
+| config.name                          | maddpg                                |
+| config.obs_agent_id                  | True                                  |
+| config.obs_individual_obs            | False                                 |
+| config.obs_last_action               | False                                 |
+| config.optim                         | Adam                                  |
+| config.optim_alpha                   | 0.99                                  |
+| config.optim_eps                     | 1e-05                                 |
+| config.reg                           | 0.001                                 |
+| config.run                           | maddpg_run                            |
+| config.runner                        | episode                               |
+| config.sampling_lambda_index         | 0                                     |
+| config.save_model                    | False                                 |
+| config.save_model_interval           | 1460000                               |
+| config.save_probs                    | False                                 |
+| config.save_replay                   | False                                 |
+| config.standardise_returns           | False                                 |
+| config.standardise_rewards           | True                                  |
+| config.t_max                         | 5000000                               |
+| config.target_update_interval_or_tau | 200                                   |
+| config.test_greedy                   | True                                  |
+| config.test_interval                 | 200                                   |
+| config.test_nepisode                 | 10                                    |
+| config.use_cuda                      | True                                  |
+| config.use_double_q                  | True                                  |
+| config.use_individual_rewards        | True                                  |
+| config.use_layer_norm                | False                                 |
+| config.use_loss_normalization        | False                                 |
+| config.use_mean_team_reward          | False                                 |
+| config.use_n_lambda                  | False                                 |
+| config.use_orthogonal                | False                                 |
+| config.use_reward_normalization      | True                                  |
+| config.use_sample_prob_weights       | True                                  |
+| config.use_single_lambda_sampling    | False                                 |
+| config.use_tensorboard               | False                                 |
+| config.use_wandb                     | True                                  |
+| config.visualize                     | False                                 |
+| config.visualize_interval            | 500000                                |
+| config.wandb_project_name            | ctraffic                              |
+| config.whittle_hidden_dim            | 128                                   |
+| development                          | False                                 |
+| enable_wandb                         | True                                  |
+| env                                  | ctraffic                              |
+| evaluate_interval                    | 10                                    |
+| evaluate_round                       | 10                                    |
+| feature_hidden_size                  | 512                                   |
+| fixed_time                           | 30                                    |
+| gamma                                | 0.99                                  |
+| gammas                               | 0.99                                  |
+| gpu_to_use                           |                                       |
+| learning_rate                        | 0.0001                                |
+| log_folder                           | logs/                                 |
+| log_interval                         | 100                                   |
+| main                                 |                                       |
+| mode                                 | train                                 |
+| model                                |                                       |
+| model_save_path                      |                                       |
+| multi_agent                          |                                       |
+| n_frames                             | 1000000                               |
+| n_steps                              | 5                                     |
+| name                                 | maddpg                                |
+| no_cuda                              | False                                 |
+| preload_model_file                   |                                       |
+| render_steps                         | -1                                    |
+| results_path                         | /cmlscratch/anirudhs/ctraffic/results |
+| save_interval                        | 0                                     |
+| seed                                 | 1156609792                            |
+| simulate_time                        | 360                                   |
+| target_reward                        | 1e+100                                |
+| tensorboardx_comment                 |                                       |
+| test_round                           | 0                                     |
+| threads                              | 4                                     |
+| use_cuda                             | False                                 |
+| wandb_api_key                        |                                       |
+| wandb_entity_name                    | anirudh-satheesh                      |
+| wandb_project_name                   | ctraffic                              |
+| wandb_sync_mode                      | online                                |
+| work_folder                          | ./                                    |
+| wrapper_model                        |                                       |
+[INFO 19:24:15] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 3264.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+Input Shape: 3296
+[INFO 19:24:23] main Beginning training for 5000000 timesteps
+[INFO 19:26:13] main t_env: 720 / 5000000
+[INFO 19:26:13] main Estimated time left: 8 days, 20 hours, 2 minutes, 46 seconds. Time passed: 1 minutes, 49 seconds
+new test result : -506.7171009999997
+[INFO 19:28:11] main t_env: 1080 / 5000000
+[INFO 19:28:11] main Estimated time left: 18 days, 21 hours, 36 minutes, 21 seconds. Time passed: 3 minutes, 47 seconds
+[INFO 19:30:08] main t_env: 1440 / 5000000
+[INFO 19:30:08] main Estimated time left: 18 days, 18 hours, 50 minutes, 9 seconds. Time passed: 5 minutes, 44 seconds
+[INFO 19:32:04] main t_env: 1800 / 5000000
+[INFO 19:32:04] main Estimated time left: 18 days, 16 hours, 13 minutes, 54 seconds. Time passed: 7 minutes, 40 seconds
+[INFO 19:34:01] main t_env: 2160 / 5000000
+[INFO 19:34:01] main Estimated time left: 18 days, 18 hours, 4 minutes, 41 seconds. Time passed: 9 minutes, 37 seconds
+[INFO 19:36:03] main t_env: 2520 / 5000000
+[INFO 19:36:03] main Estimated time left: 19 days, 17 hours, 54 minutes, 38 seconds. Time passed: 11 minutes, 40 seconds
+wandb: WARNING Fatal error while uploading data. Some run data will not be synced, but it will still be written to disk. Use `wandb sync` at the end of the run to try uploading.
+[INFO 19:38:11] main t_env: 2880 / 5000000
+[INFO 19:38:11] main Estimated time left: 20 days, 11 hours, 19 minutes, 12 seconds. Time passed: 13 minutes, 47 seconds
+[INFO 19:40:44] main t_env: 3240 / 5000000
+[INFO 19:40:44] main Estimated time left: 24 days, 12 hours, 29 minutes, 59 seconds. Time passed: 16 minutes, 20 seconds
+[INFO 19:43:16] main t_env: 3600 / 5000000
+[INFO 19:43:16] main Estimated time left: 24 days, 13 hours, 41 minutes, 21 seconds. Time passed: 18 minutes, 53 seconds
+[INFO 19:46:00] main t_env: 3960 / 5000000
+[INFO 19:46:00] main Estimated time left: 26 days, 4 hours, 48 minutes, 21 seconds. Time passed: 21 minutes, 36 seconds
+[INFO 19:48:20] main t_env: 4320 / 5000000
+[INFO 19:48:20] main Estimated time left: 22 days, 12 hours, 54 minutes, 17 seconds. Time passed: 23 minutes, 56 seconds
+[INFO 19:50:38] main t_env: 4680 / 5000000
+[INFO 19:50:38] main Estimated time left: 22 days, 3 hours, 5 minutes, 12 seconds. Time passed: 26 minutes, 14 seconds
+[INFO 19:52:38] main t_env: 5040 / 5000000
+[INFO 19:52:38] main Estimated time left: 19 days, 7 hours, 26 minutes, 55 seconds. Time passed: 28 minutes, 14 seconds
+[INFO 19:54:33] main t_env: 5400 / 5000000
+[INFO 19:54:33] main Estimated time left: 18 days, 11 hours, 7 minutes, 40 seconds. Time passed: 30 minutes, 9 seconds
+[INFO 19:56:29] main t_env: 5760 / 5000000
+[INFO 19:56:29] main Estimated time left: 18 days, 14 hours, 15 minutes, 6 seconds. Time passed: 32 minutes, 5 seconds
+[INFO 19:58:21] main t_env: 6120 / 5000000
+[INFO 19:58:21] main Estimated time left: 17 days, 22 hours, 49 minutes, 18 seconds. Time passed: 33 minutes, 57 seconds
+[INFO 20:00:13] main t_env: 6480 / 5000000
+[INFO 20:00:13] main Estimated time left: 18 days, 1 hours, 40 minutes, 10 seconds. Time passed: 35 minutes, 49 seconds
+[INFO 20:02:03] main t_env: 6840 / 5000000
+[INFO 20:02:03] main Estimated time left: 17 days, 17 hours, 13 minutes, 7 seconds. Time passed: 37 minutes, 40 seconds
+[INFO 20:03:54] main t_env: 7200 / 5000000
+[INFO 20:03:54] main Estimated time left: 17 days, 18 hours, 21 minutes, 32 seconds. Time passed: 39 minutes, 30 seconds
+[INFO 20:05:49] main t_env: 7560 / 5000000
+[INFO 20:05:49] main Estimated time left: 18 days, 9 hours, 34 minutes, 35 seconds. Time passed: 41 minutes, 25 seconds
+[INFO 20:07:41] main t_env: 7920 / 5000000
+[INFO 20:07:41] main Estimated time left: 17 days, 23 hours, 8 minutes, 7 seconds. Time passed: 43 minutes, 17 seconds
+[INFO 20:09:59] main t_env: 8280 / 5000000
+[INFO 20:09:59] main Estimated time left: 22 days, 3 hours, 21 minutes, 16 seconds. Time passed: 45 minutes, 35 seconds
+[INFO 20:12:07] main t_env: 8640 / 5000000
+[INFO 20:12:07] main Estimated time left: 20 days, 13 hours, 13 minutes, 52 seconds. Time passed: 47 minutes, 43 seconds
+[INFO 20:14:01] main t_env: 9000 / 5000000
+[INFO 20:14:01] main Estimated time left: 18 days, 8 hours, 12 minutes, 54 seconds. Time passed: 49 minutes, 37 seconds
+[INFO 20:15:52] main t_env: 9360 / 5000000
+[INFO 20:15:52] main Estimated time left: 17 days, 19 hours, 46 minutes, 15 seconds. Time passed: 51 minutes, 28 seconds
+[INFO 20:17:43] main t_env: 9720 / 5000000
+[INFO 20:17:43] main Estimated time left: 17 days, 18 hours, 11 minutes, 48 seconds. Time passed: 53 minutes, 19 seconds
+[INFO 20:19:49] main t_env: 10080 / 5000000
+[INFO 20:19:49] main Estimated time left: 20 days, 7 hours, 6 minutes, 56 seconds. Time passed: 55 minutes, 26 seconds
+[INFO 20:20:45] main Recent Stats | t_env:      10080 | Episode:       27
+agent_grad_norm:           0.0008	critic_grad_norm:         26.6517	critic_loss:               1.0072	pg_loss:                  -0.5350
+q_taken_mean:              0.0871	target_mean:               0.0879	td_error_abs:              0.7896	
+[INFO 20:21:49] main t_env: 10440 / 5000000
+[INFO 20:21:49] main Estimated time left: 19 days, 6 hours, 22 minutes, 2 seconds. Time passed: 57 minutes, 26 seconds
+[INFO 20:23:45] main t_env: 10800 / 5000000
+[INFO 20:23:45] main Estimated time left: 18 days, 14 hours, 41 minutes, 28 seconds. Time passed: 59 minutes, 22 seconds
+[INFO 20:25:45] main t_env: 11160 / 5000000
+[INFO 20:25:45] main Estimated time left: 19 days, 4 hours, 20 minutes, 55 seconds. Time passed: 1 hours, 1 minutes, 21 seconds
+[INFO 20:27:41] main t_env: 11520 / 5000000
+[INFO 20:27:41] main Estimated time left: 18 days, 12 hours, 46 minutes, 1 seconds. Time passed: 1 hours, 3 minutes, 17 seconds
+[INFO 20:29:47] main t_env: 11880 / 5000000
+[INFO 20:29:47] main Estimated time left: 20 days, 6 hours, 5 minutes, 6 seconds. Time passed: 1 hours, 5 minutes, 23 seconds
+[INFO 20:31:38] main t_env: 12240 / 5000000
+[INFO 20:31:38] main Estimated time left: 17 days, 20 hours, 24 minutes, 6 seconds. Time passed: 1 hours, 7 minutes, 15 seconds
+[INFO 20:33:29] main t_env: 12600 / 5000000
+[INFO 20:33:29] main Estimated time left: 17 days, 16 hours, 57 minutes, 13 seconds. Time passed: 1 hours, 9 minutes, 5 seconds
+[INFO 20:35:27] main t_env: 12960 / 5000000
+[INFO 20:35:27] main Estimated time left: 18 days, 23 hours, 38 minutes, 26 seconds. Time passed: 1 hours, 11 minutes, 3 seconds
+[INFO 20:37:18] main t_env: 13320 / 5000000
+[INFO 20:37:18] main Estimated time left: 17 days, 18 hours, 59 minutes, 58 seconds. Time passed: 1 hours, 12 minutes, 54 seconds
+[INFO 20:39:11] main t_env: 13680 / 5000000
+[INFO 20:39:11] main Estimated time left: 18 days, 2 hours, 18 minutes, 33 seconds. Time passed: 1 hours, 14 minutes, 47 seconds
+[INFO 20:41:09] main t_env: 14040 / 5000000
+[INFO 20:41:09] main Estimated time left: 18 days, 22 hours, 31 minutes, 19 seconds. Time passed: 1 hours, 16 minutes, 45 seconds
+[INFO 20:43:00] main t_env: 14400 / 5000000
+[INFO 20:43:00] main Estimated time left: 17 days, 18 hours, 34 minutes, 7 seconds. Time passed: 1 hours, 18 minutes, 36 seconds
+[INFO 20:44:49] main t_env: 14760 / 5000000
+[INFO 20:44:49] main Estimated time left: 17 days, 11 hours, 45 minutes, 30 seconds. Time passed: 1 hours, 20 minutes, 25 seconds
+[INFO 20:46:40] main t_env: 15120 / 5000000
+[INFO 20:46:40] main Estimated time left: 17 days, 18 hours, 27 minutes, 36 seconds. Time passed: 1 hours, 22 minutes, 16 seconds
