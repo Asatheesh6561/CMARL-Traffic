@@ -129,7 +129,7 @@ def parse_args(input_args=sys.argv):
 
     parser.add_argument("--multi-agent", type=str, default="")
 
-    parser.add_argument("--enable-wandb", action="store_true", default=False)
+    parser.add_argument("--enable-wandb", action="store_true", default=True)
     parser.add_argument("--wandb-entity-name", type=str, default="anirudh-satheesh")
     parser.add_argument("--wandb-api-key", type=str, default="")
     parser.add_argument("--wandb-project-name", type=str, default="ctraffic")

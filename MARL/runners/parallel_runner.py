@@ -153,7 +153,7 @@ class ParallelRunner:
         save_probs = self.args.config.get("save_probs", False)
 
         while True:
-            if self.args.config["mac"] == "mappo_mac":
+            if self.args.config["mac"] == "mappo_mac" or self.args.config["mac"] == "maddpg_mac":
                 mac_output = self.mac.select_actions(
                     self.batch,
                     t_ep=self.t,

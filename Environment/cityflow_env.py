@@ -343,7 +343,7 @@ class Intersection:
         res["OutLaneVehicleNumber"] = self.lane_vehicle_out_count_mat
         self.saved_phases[-1] = res["TSphase"]
         res["TSprevphases"] = list(self.saved_phases)
-        res["pressure"] = self._get_pressure_observation()
+        res["pressure"] = 0  # pressure is too expensive to calculate rn
         return res
 
     def act(self, action, pattern):
@@ -360,21 +360,15 @@ class Intersection:
         return [0]
 
     def _get_pressure_observation(self):
-        # count every roadlink pressure and average, Sigma(|P_ri|)
         lane_count_1 = self.eng.get_lane_vehicle_count()
         lane_count_2 = self.eng.get_lane_waiting_vehicle_count()
-        lanelinks = [x["lanelinks"] for x in self.roadnet_info["roadlinks"]]
         res = []
-        for ll in lanelinks:
-            start, end = zip(*ll)
-            start = set(start)
-            end = set(end)
-            RA = 0
-            RS = 0
-            for s in start:
-                RA += lane_count_1[s]
-            for e in end:
-                RS += lane_count_2[e]
+        for lanelink in self.roadnet_info["roadlinks"]:
+            # Aggregate RA and RS for the current roadlink without repeated lookups
+            RA = sum(lane_count_1[s] for s, _ in lanelink["lanelinks"])
+            RS = sum(lane_count_2[e] for _, e in lanelink["lanelinks"])
+
+            # Calculate the difference and append to results
             RR = RA - RS
             res.append(RR)
         return np.array(res)

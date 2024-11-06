@@ -53,8 +53,8 @@ def main(_run, _config, _log):
     if config["enable_wandb"]:
         wandb.login()
         wandb.init(
-            project=config["wandb-project-name"],
-            entity=config["wandb-entity-name"],
+            project=config["wandb_project_name"],
+            entity=config["wandb_entity_name"],
             name=config["name"],
         )
     run_REGISTRY[_config["config"]["run"]](_run, config, _log)
