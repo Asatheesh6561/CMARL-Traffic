@@ -1,0 +1,197 @@
+[INFO 17:57:48] main Experiment Parameters:
+|                                      | HyperParameter Value                  |
+|:-------------------------------------|:--------------------------------------|
+| CM_selected_inner                    |                                       |
+| NM_lane_embedding_size               | 32                                    |
+| NM_phase_loss_weight                 | 0                                     |
+| NM_phase_loss_with_replay            | False                                 |
+| NM_road_predict_hidden               | 32                                    |
+| NM_scale_by_lane_number              | False                                 |
+| NM_volume_loss_weight                | 0                                     |
+| agent                                |                                       |
+| cityflow_log                         |                                       |
+| config.accumulated_episodes          | 1                                     |
+| config.action_selector               | epsilon_greedy                        |
+| config.actor_input_seq_str           | o_la                                  |
+| config.agent                         | n_rnn                                 |
+| config.agent_output_type             | pi_logits                             |
+| config.batch_size                    | 8                                     |
+| config.batch_size_run                | 8                                     |
+| config.buffer_cpu_only               | True                                  |
+| config.buffer_size                   | 200                                   |
+| config.checkpoint_path               |                                       |
+| config.critic_input_seq_str          | o                                     |
+| config.critic_type                   | maddpg_critic                         |
+| config.epsilon_anneal_time           | 50000                                 |
+| config.epsilon_finish                | 0.05                                  |
+| config.epsilon_start                 | 1.0                                   |
+| config.evaluate                      | False                                 |
+| config.gamma                         | 0.985                                 |
+| config.grad_norm_clip                | 5                                     |
+| config.hidden_dim                    | 128                                   |
+| config.learner                       | maddpg_learner                        |
+| config.learner_log_interval          | 10000                                 |
+| config.local_results_path            | /cmlscratch/anirudhs/cmarl_traffic    |
+| config.log_interval                  | 10000                                 |
+| config.lr                            | 0.0005                                |
+| config.mac                           | maddpg_mac                            |
+| config.mini_epochs                   | 1                                     |
+| config.n_lambda                      | 51                                    |
+| config.name                          | maddpg                                |
+| config.obs_agent_id                  | True                                  |
+| config.obs_individual_obs            | False                                 |
+| config.obs_last_action               | False                                 |
+| config.optim                         | Adam                                  |
+| config.optim_alpha                   | 0.99                                  |
+| config.optim_eps                     | 1e-05                                 |
+| config.reg                           | 0.001                                 |
+| config.run                           | maddpg_run                            |
+| config.runner                        | episode                               |
+| config.sampling_lambda_index         | 0                                     |
+| config.save_model                    | False                                 |
+| config.save_model_interval           | 1460000                               |
+| config.save_probs                    | False                                 |
+| config.save_replay                   | False                                 |
+| config.standardise_returns           | False                                 |
+| config.standardise_rewards           | True                                  |
+| config.t_max                         | 5000000                               |
+| config.target_update_interval_or_tau | 200                                   |
+| config.test_greedy                   | True                                  |
+| config.test_interval                 | 2500                                  |
+| config.test_nepisode                 | 8                                     |
+| config.use_cuda                      | True                                  |
+| config.use_double_q                  | True                                  |
+| config.use_individual_rewards        | True                                  |
+| config.use_layer_norm                | False                                 |
+| config.use_loss_normalization        | False                                 |
+| config.use_mean_team_reward          | False                                 |
+| config.use_n_lambda                  | False                                 |
+| config.use_orthogonal                | False                                 |
+| config.use_reward_normalization      | True                                  |
+| config.use_sample_prob_weights       | True                                  |
+| config.use_single_lambda_sampling    | False                                 |
+| config.use_tensorboard               | False                                 |
+| config.use_wandb                     | True                                  |
+| config.visualize                     | False                                 |
+| config.visualize_interval            | 500000                                |
+| config.wandb_project_name            | ctraffic                              |
+| config.whittle_hidden_dim            | 128                                   |
+| development                          | False                                 |
+| enable_wandb                         | True                                  |
+| env                                  | ctraffic                              |
+| evaluate_interval                    | 10                                    |
+| evaluate_round                       | 10                                    |
+| feature_hidden_size                  | 512                                   |
+| fixed_time                           | 30                                    |
+| gamma                                | 0.99                                  |
+| gammas                               | 0.99                                  |
+| gpu_to_use                           |                                       |
+| learning_rate                        | 0.0001                                |
+| log_folder                           | logs/                                 |
+| log_interval                         | 100                                   |
+| main                                 |                                       |
+| mode                                 | train                                 |
+| model                                |                                       |
+| model_save_path                      |                                       |
+| multi_agent                          |                                       |
+| n_frames                             | 1000000                               |
+| n_steps                              | 5                                     |
+| name                                 | maddpg                                |
+| no_cuda                              | False                                 |
+| preload_model_file                   |                                       |
+| render_steps                         | -1                                    |
+| results_path                         | /cmlscratch/anirudhs/ctraffic/results |
+| save_interval                        | 0                                     |
+| seed                                 | 1986451968                            |
+| simulate_time                        | 360                                   |
+| target_reward                        | 1e+100                                |
+| tensorboardx_comment                 |                                       |
+| test_round                           | 0                                     |
+| threads                              | 24                                    |
+| use_cuda                             | True                                  |
+| wandb_api_key                        |                                       |
+| wandb_entity_name                    | anirudh-satheesh                      |
+| wandb_project_name                   | ctraffic                              |
+| wandb_sync_mode                      | online                                |
+| work_folder                          | ./                                    |
+| wrapper_model                        |                                       |
+[INFO 17:57:50] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 3264.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+Input Shape: 3296
+[INFO 17:58:20] main Beginning training for 5000000 timesteps
+-591.3244727499999
+-1176.4301230000003
+-1731.7345870000015
+-2338.952192500001
+-2969.7729929999964
+-3581.7670652499987
+-4165.000958249997
+[INFO 18:03:09] main t_env: 2520 / 5000000
+[INFO 18:03:09] main Estimated time left: 6 days, 15 hours, 40 minutes, 21 seconds. Time passed: 4 minutes, 49 seconds
+new test result : -599.0078709999997
+-4765.493402999993
+[DEBUG 18:05:08] ctraffic Stopping Heartbeat
+[WARNING 18:05:08] ctraffic Aborted after 0:07:30!
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/linecache.py", line 72, in checkcache
+    stat = os.stat(fullname)
+KeyboardInterrupt
+
+Original exception was:
+Traceback (most recent call last):
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/stdout_capturing.py", line 164, in tee_output_fd
+    yield out  # let the caller do their printing
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/run.py", line 238, in __call__
+    self.result = self.main_function(*args)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/config/captured_function.py", line 42, in captured_function
+    result = wrapped(*args, **kwargs)
+  File "/nfshomes/anirudhs/CMARL-Traffic/main.py", line 60, in main
+    run_REGISTRY[_config["config"]["run"]](_run, config, _log)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/run/episode_run.py", line 58, in run
+    run_sequential(args=args, logger=logger)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/run/episode_run.py", line 175, in run_sequential
+    episode_batch, train_reward, train_stats = runner.run(test_mode=False)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/runners/episode_runner.py", line 79, in run
+    actions = self.mac.select_actions(
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/controllers/maddpg_controller.py", line 64, in select_actions
+    chosen_actions = gumbel_softmax(agent_outputs, hard=True).argmax(dim=-1)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/controllers/maddpg_controller.py", line 43, in gumbel_softmax
+    y_hard = onehot_from_logits(y)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/controllers/maddpg_controller.py", line 14, in onehot_from_logits
+    argmax_acs = (logits == logits.max(-1, keepdim=True)[0]).float()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/nfshomes/anirudhs/CMARL-Traffic/main.py", line 83, in <module>
+    ex.run_commandline(command)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/experiment.py", line 313, in run_commandline
+    return self.run(
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/experiment.py", line 277, in run
+    run()
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/run.py", line 244, in __call__
+    self._get_captured_output()
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/stdout_capturing.py", line 177, in tee_output_fd
+    tee_stdout.wait(timeout=1)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/subprocess.py", line 1185, in wait
+    return self._wait(timeout=timeout)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/subprocess.py", line 1894, in _wait
+    if self._waitpid_lock.acquire(False):
+KeyboardInterrupt
