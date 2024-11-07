@@ -33,6 +33,7 @@ class TrafficSignal:
         self.green_times = np.zeros(len(roadnet_info["roadlinks"]))
         self.phase_skips = np.zeros(len(roadnet_info["phases"]))
         #self.phase_nums = np.zeros(len(roadnet_info["phases"]))
+        self.green_skips = np.zeros(len(roadnet_info["roadlinks"]))
         self._set_observation_space()
         self.action_space = self.phase_number - 1
         self.set_eng_phase()
@@ -139,6 +140,11 @@ class TrafficSignal:
                 if i != self.old_idx: 
                     self.phase_skips[i] += 1
             self.phase_skips[self.next_idx] = 0
+            green_ons = set(self.roadnet_info["phases"][self.old_idx] + self.roadnet_info["phases"][self.next_idx])
+            for g in range(len(TSgreen)):
+                self.green_skips[g] += 1
+            for g in green_ons:
+                self.green_skips[g] = 0
         #self.phase_nums[TSphase] += 1
         envtime = self.eng.get_current_time()
         return {
@@ -776,18 +782,13 @@ class CityFlowEnv:
         return self.eng.get_road_average_delay()
     
     def get_green_times(self):
-        for inter in self.list_intersection:
-            ts_green_times = inter.TS.green_times
-            if max(ts_green_times) > 0:
-                pass
-                # constraint - too long of time spent as green
+        return np.mean([np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0]) for inter in self.list_intersection])
     
     def get_phase_skips(self):
-        for inter in self.list_intersection:
-            ts_phase_skips = inter.TS.phase_skips
-            if max(ts_phase_skips) > 0:
-                pass
-                # constraint - too many skips of some phase
+        return np.mean([np.mean([(ps < 16) for ps in inter.TS.phase_skips]) for inter in self.list_intersection])
+
+    def get_green_skips(self):
+        return np.mean([np.mean([(gs < 4) for gs in inter.TS.green_skips]) for inter in self.list_intersection])
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
