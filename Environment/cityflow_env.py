@@ -96,6 +96,15 @@ class TrafficSignal:
                 self.set_eng_phase()
                 self.yellow_flag = True
 
+                for i in range(self.phase_number):
+                    if i != self.old_idx: 
+                        self.phase_skips[i] += 1
+                self.phase_skips[self.now_idx] = 0
+                green_ons = set(self.roadnet_info["phases"][self.old_idx] + self.roadnet_info["phases"][self.now_idx])
+                self.green_skips += 1
+                for g in green_ons:
+                    self.green_skips[g] = 0
+
     def step_time(self):
         if self.now_idx != self.old_idx:
             self.now_time = 1
@@ -135,16 +144,6 @@ class TrafficSignal:
                     # constraint - has not spent enough time as green
                 self.green_times[i] = 0
             else: self.green_times[i] += 1
-        if self.old_idx != self.next_idx:
-            for i in range(self.phase_number):
-                if i != self.old_idx: 
-                    self.phase_skips[i] += 1
-            self.phase_skips[self.next_idx] = 0
-            green_ons = set(self.roadnet_info["phases"][self.old_idx] + self.roadnet_info["phases"][self.next_idx])
-            for g in range(len(TSgreen)):
-                self.green_skips[g] += 1
-            for g in green_ons:
-                self.green_skips[g] = 0
         #self.phase_nums[TSphase] += 1
         envtime = self.eng.get_current_time()
         return {
