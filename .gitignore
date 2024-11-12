@@ -4,3 +4,4 @@ logs/
 results/
 __pycache__
 local_results
+data.tgz

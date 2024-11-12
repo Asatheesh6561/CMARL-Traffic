@@ -1,0 +1,192 @@
+[INFO 11:50:01] main Experiment Parameters:
+|                                   | HyperParameter Value                                            |
+|:----------------------------------|:----------------------------------------------------------------|
+| CM_selected_inner                 |                                                                 |
+| NM_lane_embedding_size            | 32                                                              |
+| NM_phase_loss_weight              | 0                                                               |
+| NM_phase_loss_with_replay         | False                                                           |
+| NM_road_predict_hidden            | 32                                                              |
+| NM_scale_by_lane_number           | False                                                           |
+| NM_volume_loss_weight             | 0                                                               |
+| agent                             |                                                                 |
+| cityflow_log                      |                                                                 |
+| config.action_selector            | multinomial                                                     |
+| config.actor_input_seq_str        | o_la                                                            |
+| config.agent                      | n_rnn                                                           |
+| config.agent_output_type          | pi_logits                                                       |
+| config.batch_size                 | 8                                                               |
+| config.batch_size_run             | 8                                                               |
+| config.buffer_cpu_only            | True                                                            |
+| config.buffer_size                | 8                                                               |
+| config.checkpoint_path            |                                                                 |
+| config.critic_coef                | 0.5                                                             |
+| config.critic_input_seq_str       | o                                                               |
+| config.critic_type                | mappo_rnn_critic_share                                          |
+| config.entropy_coef               | 0                                                               |
+| config.eps_clip                   | 0.15                                                            |
+| config.epsilon_anneal_time        | 500000                                                          |
+| config.epsilon_finish             | 0.05                                                            |
+| config.epsilon_start              | 1.0                                                             |
+| config.evaluate                   | False                                                           |
+| config.gae_lambda                 | 0.95                                                            |
+| config.gain                       | 0.01                                                            |
+| config.gamma                      | 0.985                                                           |
+| config.grad_norm_clip             | 10                                                              |
+| config.hidden_dim                 | 128                                                             |
+| config.layer_num                  | 2                                                               |
+| config.learner                    | local_ppo_learner                                               |
+| config.learner_log_interval       | 10000                                                           |
+| config.local_results_path         | /cmlscratch/anirudhs/cmarl_traffic                              |
+| config.log_interval               | 10000                                                           |
+| config.lr                         | 5e-05                                                           |
+| config.mac                        | mappo_mac                                                       |
+| config.mask_before_softmax        | True                                                            |
+| config.mini_epochs                | 2                                                               |
+| config.n_lambda                   | 51                                                              |
+| config.name                       | ippo_ir                                                         |
+| config.obs_agent_id               | False                                                           |
+| config.obs_last_action            | True                                                            |
+| config.optim                      | Adam                                                            |
+| config.optim_alpha                | 0.99                                                            |
+| config.optim_eps                  | 1e-05                                                           |
+| config.reg_coef                   | 0.01                                                            |
+| config.run                        | ippo_run                                                        |
+| config.runner                     | parallel                                                        |
+| config.runner_log_interval        | 10000                                                           |
+| config.sampling_lambda_index      | 0                                                               |
+| config.save_model                 | False                                                           |
+| config.save_model_interval        | 1460000                                                         |
+| config.save_probs                 | True                                                            |
+| config.save_replay                | False                                                           |
+| config.t_max                      | 500000                                                          |
+| config.target_update_interval     | 200                                                             |
+| config.test_greedy                | True                                                            |
+| config.test_interval              | 5000                                                            |
+| config.test_nepisode              | 8                                                               |
+| config.use_cuda                   | True                                                            |
+| config.use_double_q               | True                                                            |
+| config.use_individual_rewards     | True                                                            |
+| config.use_layer_norm             | True                                                            |
+| config.use_loss_normalization     | False                                                           |
+| config.use_mean_team_reward       | True                                                            |
+| config.use_n_lambda               | False                                                           |
+| config.use_orthogonal             | True                                                            |
+| config.use_reward_normalization   | False                                                           |
+| config.use_sample_prob_weights    | True                                                            |
+| config.use_single_lambda_sampling | False                                                           |
+| config.use_tensorboard            | False                                                           |
+| config.use_wandb                  | True                                                            |
+| config.visualize                  | False                                                           |
+| config.visualize_interval         | 500000                                                          |
+| config.wandb_project_name         | ctraffic                                                        |
+| config.whittle_hidden_dim         | 128                                                             |
+| constraint                        | green_skip                                                      |
+| development                       | False                                                           |
+| enable_wandb                      | True                                                            |
+| env                               | ctraffic                                                        |
+| evaluate_interval                 | 10                                                              |
+| evaluate_round                    | 10                                                              |
+| feature_hidden_size               | 512                                                             |
+| fixed_time                        | 30                                                              |
+| gamma                             | 0.99                                                            |
+| gammas                            | 0.99                                                            |
+| gpu_to_use                        |                                                                 |
+| green_skip_penalty                | 0.2                                                             |
+| green_time_penalty                | 0.2                                                             |
+| learning_rate                     | 0.0001                                                          |
+| log_folder                        | logs/                                                           |
+| log_interval                      | 100                                                             |
+| main                              |                                                                 |
+| mode                              | train                                                           |
+| model                             |                                                                 |
+| model_save_path                   |                                                                 |
+| multi_agent                       |                                                                 |
+| n_frames                          | 1000000                                                         |
+| n_steps                           | 5                                                               |
+| name                              | ippo                                                            |
+| no_cuda                           | False                                                           |
+| phase_skip_penalty                | 0.2                                                             |
+| preload_model_file                |                                                                 |
+| render_steps                      | -1                                                              |
+| results_file                      | /cmlscratch/anirudhs/ctraffic/results/ippo_JN_green_skip_57.pkl |
+| results_path                      | /cmlscratch/anirudhs/ctraffic/results                           |
+| save_interval                     | 0                                                               |
+| seed                              | 57                                                              |
+| simulate_time                     | 360                                                             |
+| target_reward                     | 1e+100                                                          |
+| tensorboardx_comment              |                                                                 |
+| test_round                        | 0                                                               |
+| threads                           | 16                                                              |
+| use_cuda                          | True                                                            |
+| wandb_api_key                     |                                                                 |
+| wandb_entity_name                 | anirudh-satheesh                                                |
+| wandb_project_name                | ctraffic                                                        |
+| wandb_sync_mode                   | online                                                          |
+| work_folder                       | ./                                                              |
+| wrapper_model                     |                                                                 |
+[INFO 11:50:02] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 2448.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+[INFO 11:50:06] main Beginning training for 500000 timesteps
+[DEBUG 11:50:16] urllib3.connectionpool Starting new HTTPS connection (2): api.wandb.ai:443
+[DEBUG 11:50:16] urllib3.connectionpool https://api.wandb.ai:443 "POST /graphql HTTP/11" 200 None
+[DEBUG 11:50:16] urllib3.connectionpool https://api.wandb.ai:443 "POST /graphql HTTP/11" 200 None
+[INFO 11:51:17] main t_env: 5760 / 500000
+[INFO 11:51:17] main Estimated time left: 1 hours, 41 minutes, 46 seconds. Time passed: 1 minutes, 11 seconds
+new test result : -2291.3030821666666
+[INFO 11:53:22] main t_env: 11520 / 500000
+[INFO 11:53:22] main Estimated time left: 2 hours, 57 minutes, 8 seconds. Time passed: 3 minutes, 16 seconds
+[INFO 11:54:15] main Recent Stats | t_env:      11520 | Episode:       32
+
+[INFO 11:55:26] main t_env: 17280 / 500000
+[INFO 11:55:26] main Estimated time left: 2 hours, 53 minutes, 39 seconds. Time passed: 5 minutes, 20 seconds
+[INFO 11:57:30] main t_env: 23040 / 500000
+[INFO 11:57:30] main Estimated time left: 2 hours, 50 minutes, 26 seconds. Time passed: 7 minutes, 24 seconds
+[INFO 11:58:25] main Recent Stats | t_env:      23040 | Episode:       64
+
+[INFO 11:59:38] main t_env: 28800 / 500000
+[INFO 11:59:38] main Estimated time left: 2 hours, 54 minutes, 54 seconds. Time passed: 9 minutes, 32 seconds
+[INFO 12:01:43] main t_env: 34560 / 500000
+[INFO 12:01:43] main Estimated time left: 2 hours, 48 minutes, 11 seconds. Time passed: 11 minutes, 37 seconds
+[INFO 12:02:37] main Recent Stats | t_env:      34560 | Episode:       96
+
+[INFO 12:03:48] main t_env: 40320 / 500000
+[INFO 12:03:48] main Estimated time left: 2 hours, 46 minutes, 23 seconds. Time passed: 13 minutes, 42 seconds
+[INFO 12:05:52] main t_env: 46080 / 500000
+[INFO 12:05:52] main Estimated time left: 2 hours, 42 minutes, 50 seconds. Time passed: 15 minutes, 46 seconds
+[INFO 12:06:46] main Recent Stats | t_env:      46080 | Episode:      128
+
+[INFO 12:07:57] main t_env: 51840 / 500000
+[INFO 12:07:57] main Estimated time left: 2 hours, 42 minutes, 17 seconds. Time passed: 17 minutes, 51 seconds
+[INFO 12:09:58] main t_env: 57600 / 500000
+[INFO 12:09:58] main Estimated time left: 2 hours, 34 minutes, 30 seconds. Time passed: 19 minutes, 52 seconds
+new test result : -2221.023229222222
+[INFO 12:10:43] main Recent Stats | t_env:      57600 | Episode:      160
+
+[INFO 12:11:43] main t_env: 63360 / 500000
+[INFO 12:11:43] main Estimated time left: 2 hours, 12 minutes, 54 seconds. Time passed: 21 minutes, 37 seconds
+new test result : -2070.774711611111
+[INFO 12:13:25] main t_env: 69120 / 500000
+[INFO 12:13:25] main Estimated time left: 2 hours, 6 minutes, 37 seconds. Time passed: 23 minutes, 19 seconds
+new test result : -2029.9113072777775
+[INFO 12:14:05] main Recent Stats | t_env:      69120 | Episode:      192
+
+[INFO 12:15:04] main t_env: 74880 / 500000
+[INFO 12:15:04] main Estimated time left: 2 hours, 2 minutes, 31 seconds. Time passed: 24 minutes, 58 seconds
+new test result : -2015.387823777777
+[INFO 12:16:48] main t_env: 80640 / 500000
+[INFO 12:16:48] main Estimated time left: 2 hours, 5 minutes, 51 seconds. Time passed: 26 minutes, 42 seconds
+new test result : -2009.7355441111113
+[INFO 12:17:33] main Recent Stats | t_env:      80640 | Episode:      224

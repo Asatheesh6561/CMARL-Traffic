@@ -61,7 +61,9 @@ def parse_cityflow_config(
                 "and is not same in cityflow config: %s" % configname
             )
     cf_conf["CONFIG_FILE"] = configname
-
+    args.phase_skip_penalty = cf_conf["PHASE_SKIP"]
+    args.green_time_penalty = cf_conf["GREEN_TIME"]
+    args.green_skip_penalty = cf_conf["GREEN_SKIP"]
     if len(cityflow_config_modify) > 0:
         # modify config
         for mconfigs in cityflow_config_modify:
@@ -122,14 +124,19 @@ def parse_args(input_args=sys.argv):
     parser.add_argument(
         "--NM-phase-loss-with-replay", action="store_true", default=False
     )
-
+    parser.add_argument(
+        "--constraint",
+        type=str,
+        choices=["PhaseSkip", "GreenTime", "GreenSkip", "None"],
+        default="None",
+    )
     parser.add_argument("--CM-selected-inner", type=str, default="")
 
     parser.add_argument("--gammas", type=str, default="0.99")
 
     parser.add_argument("--multi-agent", type=str, default="")
 
-    parser.add_argument("--enable-wandb", action="store_true", default=True)
+    parser.add_argument("--enable-wandb", action="store_true", default=False)
     parser.add_argument("--wandb-entity-name", type=str, default="anirudh-satheesh")
     parser.add_argument("--wandb-api-key", type=str, default="")
     parser.add_argument("--wandb-project-name", type=str, default="ctraffic")

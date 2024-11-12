@@ -4,11 +4,11 @@ import sys
 from collections import defaultdict
 from functools import partial
 from multiprocessing import Pipe, Process
-
+import time
 import numpy as np
 import torch.nn.functional as F
 import torch
-
+import faulthandler
 import wandb
 from MARL.components.episode_buffer import EpisodeBatch
 from MARL.envs import REGISTRY as env_REGISTRY
@@ -120,11 +120,23 @@ class ParallelRunner:
         self.train_rewards = []
         self.test_rewards = []
 
+    def compute_reward(self, reward, env_info):
+        if self.args.constraint == "PhaseSkip":
+            reward -= env_info["phase_skips"] * self.args.phase_skip_penalty
+        elif self.args.constraint == "GreenSkip":
+            reward -= env_info["green_skips"] * self.args.green_skip_penalty
+        elif self.args.constraint == "GreenTime":
+            reward -= env_info["green_times"] * self.args.green_time_penalty
+        else:
+            pass
+        return reward
+
     def run(
         self,
         lbda_index=None,
         test_mode=False,
     ):
+        faulthandler.enable()
         self.reset(test_mode=test_mode)
 
         all_terminated = False
@@ -153,7 +165,10 @@ class ParallelRunner:
         save_probs = self.args.config.get("save_probs", False)
 
         while True:
-            if self.args.config["mac"] == "mappo_mac" or self.args.config["mac"] == "maddpg_mac":
+            if (
+                self.args.config["mac"] == "mappo_mac"
+                or self.args.config["mac"] == "maddpg_mac"
+            ):
                 mac_output = self.mac.select_actions(
                     self.batch,
                     t_ep=self.t,
@@ -193,15 +208,15 @@ class ParallelRunner:
                 actions_chosen, bs=envs_not_terminated, ts=self.t, mark_filled=False
             )
 
-            # Send actions to each env
+            # Send actions to each environment
             action_idx = 0
             for idx, parent_conn in enumerate(self.parent_conns):
                 if idx in envs_not_terminated:  # We produced actions for this env
                     if not terminated[
                         idx
-                    ]:  # Only send the actions to the env if it hasn't terminated
+                    ]:  # Only send the actions if it hasn't terminated
                         parent_conn.send(("step", cpu_actions[action_idx]))
-                    action_idx += 1  # actions is not a list over every env
+                    action_idx += 1
 
             # Update envs_not_terminated
             envs_not_terminated = [
@@ -243,13 +258,13 @@ class ParallelRunner:
                     episode_returns[idx] += data["reward"]
 
                     if self.args.n_agents > 1:
-                        episode_individual_returns[idx] += data["info"][
-                            "individual_rewards"
-                        ]
+                        episode_individual_returns[idx] += self.compute_reward(
+                            data["info"]["individual_rewards"], data["info"]
+                        )
                     else:
-                        episode_individual_returns[idx] += data["info"][
-                            "individual_rewards"
-                        ][0]
+                        episode_individual_returns[idx] += self.compute_reward(
+                            data["info"]["individual_rewards"][0], data["info"]
+                        )
 
                     episode_lengths[idx] += 1
                     if not test_mode:
@@ -336,8 +351,16 @@ class ParallelRunner:
 
             cur_rewards = np.array(cur_rewards)
             rewards = cur_rewards.mean()
-
-            return cur_stats, lambda_return, rewards
+            final_stats = {}
+            for k in cur_stats:
+                if k in [
+                    "average_time",
+                    "average_delay",
+                    "throughput",
+                    "average_wait_time",
+                ]:
+                    final_stats[k] = cur_stats[k]
+            return final_stats, lambda_return, rewards
         else:
             cur_returns = np.array(cur_returns)
             mean_returns = cur_returns.mean(axis=0)
@@ -345,8 +368,16 @@ class ParallelRunner:
 
             cur_rewards = np.array(cur_rewards)
             rewards = cur_rewards.mean()
-
-            return self.batch, cur_stats, lambda_return, rewards
+            final_stats = {}
+            for k in cur_stats:
+                if k in [
+                    "average_time",
+                    "average_delay",
+                    "throughput",
+                    "average_wait_time",
+                ]:
+                    final_stats[k] = cur_stats[k]
+            return self.batch, final_stats, lambda_return, rewards
 
     def _log(self, returns, individual_returns, rewards, stats, prefix):
         self.logger.log_stat(prefix + "_return_mean", np.mean(returns), self.t_env)
@@ -374,7 +405,21 @@ def env_worker(remote, env_fn):
         if cmd == "step":
             actions = data
             # Take a step in the environment
-            reward, terminated, env_info = env.step(actions)
+            MAX_RETRIES = 10
+            RETRY_DELAY = 0.5
+            retries = 0
+            while retries < MAX_RETRIES:
+                try:
+                    reward, terminated, env_info = env.step(actions)
+                    break
+                except Exception as e:
+                    print(f"Error! Retrying...")
+                    time.sleep(RETRY_DELAY)
+                    retries += 1
+            else:
+                print(
+                    f"Failed to communicate with environment after {MAX_RETRIES} attempts."
+                )
             # Return the observations, avail_actions and state to make the next action
             state = env.get_state()
             avail_actions = env.get_avail_actions()

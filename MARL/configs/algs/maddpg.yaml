@@ -2,7 +2,7 @@
 
 test_greedy: True                       # Use greedy evaluation (if False, will set epsilon floor to 0)
 test_nepisode: 10                       # Evaluate the policy at the end of training for test_nepsidoes episodes
-test_interval: 50000                  # Evaluate the policy for every test_interval iterations
+test_interval: 5000                  # Evaluate the policy for every test_interval iterations
 log_interval: 10000                     # Print stats to console for every log_interval iterations
 visualize: False                        # Whether to visualize the policy
 visualize_interval: 500000                # Visualize the policy for every visualize_interval iterations
@@ -32,12 +32,12 @@ buffer_cpu_only: True                   # Whether to store the buffer in the CPU
 name: "maddpg"                          # The name of the algorithm
 run: "maddpg_run"                          # Which runner REGISTER to use
 use_cuda: True                          # Whether to use GPU
-t_max: 5000000                          # Train t_max iterations in total
+t_max: 500000                          # Train t_max iterations in total
 
 action_selector: "epsilon_greedy"       # How to select actions during the training (and maybe evaluation depending on test_greedy)
 epsilon_start: 1.0                      # Annealing from epsilon_start to epsilon_finish linearly in epsilon_anneal_time iterations
 epsilon_finish: 0.05
-epsilon_anneal_time: 50000
+epsilon_anneal_time: 500000
 save_probs: False                       # Whether to also return the action selection probablity from the action selector
 
 learner: "maddpg_learner"              # Which learner REGISTER to use

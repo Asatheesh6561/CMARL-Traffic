@@ -1,0 +1,236 @@
+[INFO 15:45:20] main Experiment Parameters:
+|                                      | HyperParameter Value                  |
+|:-------------------------------------|:--------------------------------------|
+| CM_selected_inner                    |                                       |
+| NM_lane_embedding_size               | 32                                    |
+| NM_phase_loss_weight                 | 0                                     |
+| NM_phase_loss_with_replay            | False                                 |
+| NM_road_predict_hidden               | 32                                    |
+| NM_scale_by_lane_number              | False                                 |
+| NM_volume_loss_weight                | 0                                     |
+| agent                                |                                       |
+| cityflow_log                         |                                       |
+| config.accumulated_episodes          | 1                                     |
+| config.action_selector               | epsilon_greedy                        |
+| config.actor_input_seq_str           | o_la                                  |
+| config.agent                         | n_rnn                                 |
+| config.agent_output_type             | pi_logits                             |
+| config.batch_size                    | 8                                     |
+| config.batch_size_run                | 8                                     |
+| config.buffer_cpu_only               | True                                  |
+| config.buffer_size                   | 200                                   |
+| config.checkpoint_path               |                                       |
+| config.critic_input_seq_str          | o                                     |
+| config.critic_type                   | maddpg_critic                         |
+| config.epsilon_anneal_time           | 2000000                               |
+| config.epsilon_finish                | 0.05                                  |
+| config.epsilon_start                 | 1.0                                   |
+| config.evaluate                      | False                                 |
+| config.gamma                         | 0.985                                 |
+| config.grad_norm_clip                | 5                                     |
+| config.hidden_dim                    | 128                                   |
+| config.learner                       | maddpg_learner                        |
+| config.learner_log_interval          | 10000                                 |
+| config.local_results_path            | /cmlscratch/anirudhs/cmarl_traffic    |
+| config.log_interval                  | 10000                                 |
+| config.lr                            | 0.0005                                |
+| config.mac                           | maddpg_mac                            |
+| config.mini_epochs                   | 1                                     |
+| config.n_lambda                      | 51                                    |
+| config.name                          | maddpg                                |
+| config.obs_agent_id                  | True                                  |
+| config.obs_individual_obs            | False                                 |
+| config.obs_last_action               | False                                 |
+| config.optim                         | Adam                                  |
+| config.optim_alpha                   | 0.99                                  |
+| config.optim_eps                     | 1e-05                                 |
+| config.reg                           | 0.001                                 |
+| config.run                           | maddpg_run                            |
+| config.runner                        | episode                               |
+| config.sampling_lambda_index         | 0                                     |
+| config.save_model                    | False                                 |
+| config.save_model_interval           | 1460000                               |
+| config.save_probs                    | False                                 |
+| config.save_replay                   | False                                 |
+| config.standardise_returns           | False                                 |
+| config.standardise_rewards           | True                                  |
+| config.t_max                         | 2000000                               |
+| config.target_update_interval_or_tau | 200                                   |
+| config.test_greedy                   | True                                  |
+| config.test_interval                 | 20000                                 |
+| config.test_nepisode                 | 8                                     |
+| config.use_cuda                      | True                                  |
+| config.use_double_q                  | True                                  |
+| config.use_individual_rewards        | True                                  |
+| config.use_layer_norm                | False                                 |
+| config.use_loss_normalization        | False                                 |
+| config.use_mean_team_reward          | False                                 |
+| config.use_n_lambda                  | False                                 |
+| config.use_orthogonal                | False                                 |
+| config.use_reward_normalization      | True                                  |
+| config.use_sample_prob_weights       | True                                  |
+| config.use_single_lambda_sampling    | False                                 |
+| config.use_tensorboard               | False                                 |
+| config.use_wandb                     | True                                  |
+| config.visualize                     | False                                 |
+| config.visualize_interval            | 500000                                |
+| config.wandb_project_name            | ctraffic                              |
+| config.whittle_hidden_dim            | 128                                   |
+| constraint                           | green_time                            |
+| development                          | False                                 |
+| enable_wandb                         | True                                  |
+| env                                  | ctraffic                              |
+| evaluate_interval                    | 10                                    |
+| evaluate_round                       | 10                                    |
+| feature_hidden_size                  | 512                                   |
+| fixed_time                           | 30                                    |
+| gamma                                | 0.99                                  |
+| gammas                               | 0.99                                  |
+| gpu_to_use                           |                                       |
+| green_skip_penalty                   | 0.2                                   |
+| green_time_penalty                   | 0.2                                   |
+| learning_rate                        | 0.0001                                |
+| log_folder                           | logs/                                 |
+| log_interval                         | 100                                   |
+| main                                 |                                       |
+| mode                                 | train                                 |
+| model                                |                                       |
+| model_save_path                      |                                       |
+| multi_agent                          |                                       |
+| n_frames                             | 1000000                               |
+| n_steps                              | 5                                     |
+| name                                 | maddpg                                |
+| no_cuda                              | False                                 |
+| phase_skip_penalty                   | 0.2                                   |
+| preload_model_file                   |                                       |
+| render_steps                         | -1                                    |
+| results_path                         | /cmlscratch/anirudhs/ctraffic/results |
+| save_interval                        | 0                                     |
+| seed                                 | 1104700416                            |
+| simulate_time                        | 360                                   |
+| target_reward                        | 1e+100                                |
+| tensorboardx_comment                 |                                       |
+| test_round                           | 0                                     |
+| threads                              | 128                                   |
+| use_cuda                             | True                                  |
+| wandb_api_key                        |                                       |
+| wandb_entity_name                    | anirudh-satheesh                      |
+| wandb_project_name                   | ctraffic                              |
+| wandb_sync_mode                      | online                                |
+| work_folder                          | ./                                    |
+| wrapper_model                        |                                       |
+[INFO 15:45:21] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 9792.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+Input Shape: 9888
+[INFO 15:45:32] main Beginning training for 2000000 timesteps
+[INFO 15:58:20] main Recent Stats | t_env:      10080 | Episode:      216
+agent_grad_norm:           0.0015	critic_grad_norm:         35.4389	critic_loss:               1.0008	pg_loss:                  -0.4196
+q_taken_mean:             -0.1536	target_mean:              -0.1630	td_error_abs:              0.8634	
+[INFO 16:11:07] main t_env: 20160 / 2000000
+[INFO 16:11:07] main Estimated time left: 1 days, 17 hours, 52 minutes, 44 seconds. Time passed: 25 minutes, 35 seconds
+new test result : -1041.9815640277777
+[INFO 16:11:32] main Recent Stats | t_env:      20160 | Episode:      440
+agent_grad_norm:           0.0008	critic_grad_norm:         22.8847	critic_loss:               0.5318	pg_loss:                  -0.0803
+q_taken_mean:             -0.0836	target_mean:              -0.0481	td_error_abs:              0.5266	
+[INFO 16:24:23] main Recent Stats | t_env:      30240 | Episode:      664
+agent_grad_norm:           0.0003	critic_grad_norm:         29.9338	critic_loss:               0.4679	pg_loss:                  -0.1780
+q_taken_mean:             -0.0834	target_mean:              -0.1717	td_error_abs:              0.5197	
+[INFO 16:37:10] main t_env: 40320 / 2000000
+[INFO 16:37:10] main Estimated time left: 1 days, 18 hours, 12 minutes, 45 seconds. Time passed: 51 minutes, 38 seconds
+[INFO 16:37:36] main Recent Stats | t_env:      40320 | Episode:      888
+agent_grad_norm:           0.0000	critic_grad_norm:         25.0123	critic_loss:               0.3703	pg_loss:                  -0.3836
+q_taken_mean:             -0.2980	target_mean:              -0.3380	td_error_abs:              0.4388	
+[INFO 16:50:14] main Recent Stats | t_env:      50400 | Episode:     1112
+agent_grad_norm:           0.0000	critic_grad_norm:         28.1974	critic_loss:               0.3776	pg_loss:                  -0.5581
+q_taken_mean:             -0.4191	target_mean:              -0.3875	td_error_abs:              0.4537	
+[INFO 17:02:59] main t_env: 60480 / 2000000
+[INFO 17:02:59] main Estimated time left: 1 days, 17 hours, 23 minutes, 36 seconds. Time passed: 1 hours, 17 minutes, 27 seconds
+new test result : -1004.2092308055553
+[INFO 17:03:26] main Recent Stats | t_env:      60480 | Episode:     1336
+agent_grad_norm:           0.0000	critic_grad_norm:         33.0035	critic_loss:               0.2168	pg_loss:                  -0.8179
+q_taken_mean:             -0.5419	target_mean:              -0.5747	td_error_abs:              0.3559	
+[INFO 17:16:03] main Recent Stats | t_env:      70560 | Episode:     1560
+agent_grad_norm:           0.0000	critic_grad_norm:         41.7330	critic_loss:               0.2334	pg_loss:                  -1.2956
+q_taken_mean:             -0.9382	target_mean:              -0.9187	td_error_abs:              0.3843	
+[INFO 17:29:01] main t_env: 80640 / 2000000
+[INFO 17:29:01] main Estimated time left: 1 days, 17 hours, 17 minutes, 47 seconds. Time passed: 1 hours, 43 minutes, 28 seconds
+[INFO 17:29:27] main Recent Stats | t_env:      80640 | Episode:     1784
+agent_grad_norm:           0.0000	critic_grad_norm:         42.5596	critic_loss:               0.2700	pg_loss:                  -2.2079
+q_taken_mean:             -1.7663	target_mean:              -1.6404	td_error_abs:              0.4063	
+[INFO 17:42:27] main Recent Stats | t_env:      90720 | Episode:     2008
+agent_grad_norm:           0.0000	critic_grad_norm:         66.8992	critic_loss:               0.3660	pg_loss:                  -3.0717
+q_taken_mean:             -2.4936	target_mean:              -2.5024	td_error_abs:              0.4984	
+[INFO 17:55:30] main t_env: 100800 / 2000000
+[INFO 17:55:30] main Estimated time left: 1 days, 17 hours, 35 minutes, 45 seconds. Time passed: 2 hours, 9 minutes, 58 seconds
+[INFO 17:55:57] main Recent Stats | t_env:     100800 | Episode:     2232
+agent_grad_norm:           0.0000	critic_grad_norm:         88.3906	critic_loss:               0.4396	pg_loss:                  -3.7473
+q_taken_mean:             -3.1448	target_mean:              -3.3623	td_error_abs:              0.5542	
+[INFO 18:10:50] main Recent Stats | t_env:     110880 | Episode:     2456
+agent_grad_norm:           0.0000	critic_grad_norm:         80.6699	critic_loss:               0.4249	pg_loss:                  -4.6589
+q_taken_mean:             -4.1691	target_mean:              -4.2974	td_error_abs:              0.5347	
+[INFO 18:25:54] main t_env: 120960 / 2000000
+[INFO 18:25:54] main Estimated time left: 1 days, 23 hours, 13 minutes, 4 seconds. Time passed: 2 hours, 40 minutes, 22 seconds
+[INFO 18:26:23] main Recent Stats | t_env:     120960 | Episode:     2680
+agent_grad_norm:           0.0000	critic_grad_norm:         79.2060	critic_loss:               0.4195	pg_loss:                  -5.8122
+q_taken_mean:             -5.0736	target_mean:              -5.3034	td_error_abs:              0.5249	
+[INFO 18:41:20] main Recent Stats | t_env:     131040 | Episode:     2904
+agent_grad_norm:           0.0000	critic_grad_norm:         81.5114	critic_loss:               0.3467	pg_loss:                  -6.3670
+q_taken_mean:             -5.5079	target_mean:              -5.8098	td_error_abs:              0.4659	
+[INFO 18:56:15] main t_env: 141120 / 2000000
+[INFO 18:56:15] main Estimated time left: 1 days, 22 hours, 37 minutes, 59 seconds. Time passed: 3 hours, 10 minutes, 42 seconds
+[INFO 18:56:43] main Recent Stats | t_env:     141120 | Episode:     3128
+agent_grad_norm:           0.0000	critic_grad_norm:         62.3529	critic_loss:               0.2563	pg_loss:                  -7.2629
+q_taken_mean:             -6.2172	target_mean:              -6.4221	td_error_abs:              0.3828	
+[INFO 19:11:51] main Recent Stats | t_env:     151200 | Episode:     3352
+agent_grad_norm:           0.0000	critic_grad_norm:         64.9490	critic_loss:               0.2264	pg_loss:                  -8.3126
+q_taken_mean:             -7.3379	target_mean:              -7.2323	td_error_abs:              0.3739	
+[INFO 19:27:20] main t_env: 161280 / 2000000
+[INFO 19:27:20] main Estimated time left: 1 days, 23 hours, 15 minutes, 44 seconds. Time passed: 3 hours, 41 minutes, 48 seconds
+[INFO 19:27:52] main Recent Stats | t_env:     161280 | Episode:     3576
+agent_grad_norm:           0.0000	critic_grad_norm:         83.8239	critic_loss:               0.3623	pg_loss:                  -9.3862
+q_taken_mean:             -8.3012	target_mean:              -8.0790	td_error_abs:              0.4701	
+[INFO 19:43:32] main Recent Stats | t_env:     171360 | Episode:     3800
+agent_grad_norm:           0.0000	critic_grad_norm:         95.4497	critic_loss:               0.4250	pg_loss:                  -9.9860
+q_taken_mean:             -9.1039	target_mean:              -8.7234	td_error_abs:              0.5287	
+[INFO 19:58:57] main t_env: 181440 / 2000000
+[INFO 19:58:57] main Estimated time left: 1 days, 23 hours, 31 minutes, 35 seconds. Time passed: 4 hours, 13 minutes, 25 seconds
+[INFO 19:59:28] main Recent Stats | t_env:     181440 | Episode:     4024
+agent_grad_norm:           0.0000	critic_grad_norm:        123.4821	critic_loss:               0.5428	pg_loss:                 -10.4779
+q_taken_mean:             -9.9606	target_mean:              -9.3761	td_error_abs:              0.6220	
+[INFO 20:14:58] main Recent Stats | t_env:     191520 | Episode:     4248
+agent_grad_norm:           0.0000	critic_grad_norm:        185.3355	critic_loss:               0.9211	pg_loss:                 -10.9366
+q_taken_mean:            -10.7429	target_mean:              -9.8547	td_error_abs:              0.8409	
+[INFO 20:30:29] main t_env: 201600 / 2000000
+[INFO 20:30:29] main Estimated time left: 1 days, 22 hours, 53 minutes, 40 seconds. Time passed: 4 hours, 44 minutes, 57 seconds
+[INFO 20:31:01] main Recent Stats | t_env:     201600 | Episode:     4472
+agent_grad_norm:           0.0000	critic_grad_norm:        166.3593	critic_loss:               0.8288	pg_loss:                 -11.3055
+q_taken_mean:            -10.9955	target_mean:             -10.3152	td_error_abs:              0.7596	
+[INFO 20:46:42] main Recent Stats | t_env:     211680 | Episode:     4696
+agent_grad_norm:           0.0000	critic_grad_norm:        148.6464	critic_loss:               0.6826	pg_loss:                 -11.6048
+q_taken_mean:            -11.3845	target_mean:             -10.8019	td_error_abs:              0.6476	
+[INFO 21:02:07] main t_env: 221760 / 2000000
+[INFO 21:02:07] main Estimated time left: 1 days, 22 hours, 29 minutes, 19 seconds. Time passed: 5 hours, 16 minutes, 34 seconds
+[INFO 21:02:38] main Recent Stats | t_env:     221760 | Episode:     4920
+agent_grad_norm:           0.0000	critic_grad_norm:        161.6804	critic_loss:               0.7313	pg_loss:                 -12.0509
+q_taken_mean:            -11.7207	target_mean:             -11.3937	td_error_abs:              0.6852	
+[INFO 21:17:56] main Recent Stats | t_env:     231840 | Episode:     5144
+agent_grad_norm:           0.0000	critic_grad_norm:        140.7954	critic_loss:               0.6253	pg_loss:                 -12.4800
+q_taken_mean:            -12.1056	target_mean:             -11.8592	td_error_abs:              0.6092	
+[INFO 21:32:46] main t_env: 241920 / 2000000
+[INFO 21:32:46] main Estimated time left: 1 days, 20 hours, 33 minutes, 36 seconds. Time passed: 5 hours, 47 minutes, 14 seconds
+[INFO 21:33:15] main Recent Stats | t_env:     241920 | Episode:     5368
+agent_grad_norm:           0.0000	critic_grad_norm:        105.7771	critic_loss:               0.3283	pg_loss:                 -12.9551
+q_taken_mean:            -12.3986	target_mean:             -12.5257	td_error_abs:              0.4611	

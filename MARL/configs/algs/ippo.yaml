@@ -2,7 +2,7 @@
 
 test_greedy: True                       # Use greedy evaluation (if False, will set epsilon floor to 0)
 test_nepisode: 10                       # Evaluate the policy at the end of training for test_nepsidoes episodes
-test_interval: 2500                    # Evaluate the policy for every test_interval iterations
+test_interval: 5000                    # Evaluate the policy for every test_interval iterations
 log_interval: 10000                     # Print stats to console for every log_interval iterations
 visualize: False                        # Whether to visualize the policy
 visualize_interval: 500000                # Visualize the policy for every visualize_interval iterations
@@ -20,7 +20,7 @@ use_tensorboard: False                  # Whether log results to tensorboard
 
 # ======== Sampling ========
 
-runner: "parallel"                      # The runner used to collect samples for training
+runner: "episode"                      # The runner used to collect samples for training
 batch_size: 8                           # Collect batch_size episodes for training in each iteration
 batch_size_run: 8                       # Run batch_size_run parallel environments in the runner
 buffer_size: 8                          # The maximum number of episodes stored in the buffer
@@ -31,12 +31,12 @@ buffer_cpu_only: True                   # Whether to store the buffer in the CPU
 name: "ippo_ir"                         # The name of the algorithm
 run: "ippo_run"                         # Which runner REGISTER to use
 use_cuda: True                          # Whether to use GPU
-t_max: 5020000                          # Train t_max iterations in total
+t_max: 500000                          # Train t_max iterations in total
 
 action_selector: "multinomial"          # How to select actions during the training (and maybe evaluation depending on test_greedy)
 epsilon_start: 1.0                      # Annealing from epsilon_start to epsilon_finish linearly in epsilon_anneal_time iterations
 epsilon_finish: 0.05
-epsilon_anneal_time: 5000000
+epsilon_anneal_time: 500000
 save_probs: True                        # Whether to also return the action selection probablity from the action selector
 mask_before_softmax: True
 

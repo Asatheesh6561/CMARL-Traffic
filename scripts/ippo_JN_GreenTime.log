@@ -1,0 +1,39 @@
+Identity added: /nfshomes/anirudhs/.ssh/id_ecdsa (anirudhs@nexuscml00.umiacs.umd.edu)
+Identity added: /nfshomes/anirudhs/.ssh/id_ed25519 (anirudh.satheesh@gmail.com)
+[DEBUG 14:31:16] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:16] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:31:17] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[INFO 14:31:18] root Saving to FileStorageObserver in /cmlscratch/anirudhs/ctraffic/results/sacred.
+[DEBUG 14:31:18] ctraffic Using capture mode "fd"
+threads unset, auto use 16 threads
+[INFO 14:31:18] ctraffic Running command 'main'
+[INFO 14:31:18] ctraffic Started run with ID "280"
+[DEBUG 14:31:18] ctraffic Starting Heartbeat
+[DEBUG 14:31:18] main Started
+[INFO 14:31:19] main Experiment Parameters:
+[INFO 14:31:20] main MDP Components:
+[INFO 14:31:25] main Beginning training for 500000 timesteps
+[INFO 14:34:06] main t_env: 5040 / 500000
+[INFO 14:34:06] main Estimated time left: 4 hours, 23 minutes, 29 seconds. Time passed: 2 minutes, 40 seconds
+[INFO 14:37:21] main t_env: 10080 / 500000
+[INFO 14:37:21] main Estimated time left: 5 hours, 16 minutes, 20 seconds. Time passed: 5 minutes, 56 seconds
+[INFO 14:37:36] main Recent Stats | t_env:      10080 | Episode:      224
+
+[INFO 14:40:32] main t_env: 15120 / 500000
+[INFO 14:40:32] main Estimated time left: 5 hours, 5 minutes, 41 seconds. Time passed: 9 minutes, 6 seconds
+[INFO 14:43:49] main t_env: 20160 / 500000
+[INFO 14:43:49] main Estimated time left: 5 hours, 13 minutes, 16 seconds. Time passed: 12 minutes, 24 seconds
+[INFO 14:44:05] main Recent Stats | t_env:      20160 | Episode:      448
+

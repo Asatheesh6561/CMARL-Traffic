@@ -9,7 +9,6 @@ import pdb
 import wandb
 import warnings
 import ast
-
 from sacred import SETTINGS, Experiment
 from sacred.observers import FileStorageObserver
 from sacred.utils import apply_backspaces_and_linefeeds
@@ -71,11 +70,21 @@ if __name__ == "__main__":
         alg_config = _get_config(args[index].split("=")[1])
         name = os.path.basename(args[index].split("=")[1]).split(".")[0]
         args = args[:index] + args[index + 1 :]
+    for arg in args:
+        if "--cityflow-config" in arg:
+            cityflow_name = arg.split("=")[1]
+            cityflow_name = cityflow_name[
+                cityflow_name.index(".") - 2 : cityflow_name.index(".")
+            ]
     command = args[0]
     args = vars(parse_args(args))
     args["config"] = alg_config
     args["results_path"] = "/cmlscratch/anirudhs/ctraffic/results"
     args["name"] = name
+    args["results_file"] = os.path.join(
+        args["results_path"],
+        f"{args['name']}_{cityflow_name}_{args['constraint']}_{args['seed']}.pkl",
+    )
     ex.add_config(args)
     file_obs_path = os.path.join(args["results_path"], "sacred")
     logger.info("Saving to FileStorageObserver in {}.".format(file_obs_path))

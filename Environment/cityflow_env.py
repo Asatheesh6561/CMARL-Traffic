@@ -32,7 +32,7 @@ class TrafficSignal:
         self.phase_number = len(roadnet_info["phases"])
         self.green_times = np.zeros(len(roadnet_info["roadlinks"]))
         self.phase_skips = np.zeros(len(roadnet_info["phases"]))
-        #self.phase_nums = np.zeros(len(roadnet_info["phases"]))
+        # self.phase_nums = np.zeros(len(roadnet_info["phases"]))
         self.green_skips = np.zeros(len(roadnet_info["roadlinks"]))
         self._set_observation_space()
         self.action_space = self.phase_number - 1
@@ -97,10 +97,13 @@ class TrafficSignal:
                 self.yellow_flag = True
 
                 for i in range(self.phase_number):
-                    if i != self.old_idx: 
+                    if i != self.old_idx:
                         self.phase_skips[i] += 1
                 self.phase_skips[self.now_idx] = 0
-                green_ons = set(self.roadnet_info["phases"][self.old_idx] + self.roadnet_info["phases"][self.now_idx])
+                green_ons = set(
+                    self.roadnet_info["phases"][self.old_idx]
+                    + self.roadnet_info["phases"][self.now_idx]
+                )
                 self.green_skips += 1
                 for g in green_ons:
                     self.green_skips[g] = 0
@@ -138,13 +141,14 @@ class TrafficSignal:
         for phase in self.roadnet_info["phases"][self.now_idx]:
             TSgreen[phase] = 1
         for i, l in enumerate(TSgreen):
-            if l == 0: 
+            if l == 0:
                 if self.green_times[i] > 0 and self.green_times[i] < 0:
                     pass
                     # constraint - has not spent enough time as green
                 self.green_times[i] = 0
-            else: self.green_times[i] += 1
-        #self.phase_nums[TSphase] += 1
+            else:
+                self.green_times[i] += 1
+        # self.phase_nums[TSphase] += 1
         envtime = self.eng.get_current_time()
         return {
             "TSflow": TSflow,
@@ -770,18 +774,33 @@ class CityFlowEnv:
 
     def _average_delay(self):
         return self.eng.get_average_delay()
-    
+
     def _average_road_delay(self):
         return self.eng.get_road_average_delay()
-    
+
     def get_green_times(self):
-        return np.mean([np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0]) for inter in self.list_intersection])
-    
+        return np.mean(
+            [
+                np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0])
+                for inter in self.list_intersection
+            ]
+        )
+
     def get_phase_skips(self):
-        return np.mean([np.mean([(ps < 16) for ps in inter.TS.phase_skips]) for inter in self.list_intersection])
+        return np.mean(
+            [
+                np.mean([(ps < 16) for ps in inter.TS.phase_skips])
+                for inter in self.list_intersection
+            ]
+        )
 
     def get_green_skips(self):
-        return np.mean([np.mean([(gs < 4) for gs in inter.TS.green_skips]) for inter in self.list_intersection])
+        return np.mean(
+            [
+                np.mean([(gs < 4) for gs in inter.TS.green_skips])
+                for inter in self.list_intersection
+            ]
+        )
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
@@ -810,6 +829,9 @@ class CityFlowEnv:
             ),
             "individual_rewards": all_reward,
             "total_reward": all_reward.sum(),
+            "green_times": self.get_green_times(),
+            "phase_skips": self.get_phase_skips(),
+            "green_skips": self.get_green_skips(),
         }
 
         return state, all_reward.mean(), done, infos
@@ -852,7 +874,13 @@ class CityFlowEnv:
             inter.act(action, pattern)
         for i in range(int(1 / self.config["INTERVAL"])):
             # self.flow_generator.check(self.eng.get_current_time())
-            self.eng.next_step()  # catch errors and report to above
+
+            while True:
+                try:
+                    self.eng.next_step()  # catch errors and report to above
+                    break
+                except Exception as e:
+                    log.error(f"Error in next_step: {e}")
             if (
                 "NOT_COUNT_VEHICLE_VOLUME" not in self.config
                 or not self.config["NOT_COUNT_VEHICLE_VOLUME"]
