@@ -32,7 +32,6 @@ class TrafficSignal:
         self.phase_number = len(roadnet_info["phases"])
         self.green_times = np.zeros(len(roadnet_info["roadlinks"]))
         self.phase_skips = np.zeros(len(roadnet_info["phases"]))
-        # self.phase_nums = np.zeros(len(roadnet_info["phases"]))
         self.green_skips = np.zeros(len(roadnet_info["roadlinks"]))
         self._set_observation_space()
         self.action_space = self.phase_number - 1
@@ -146,9 +145,7 @@ class TrafficSignal:
                     pass
                     # constraint - has not spent enough time as green
                 self.green_times[i] = 0
-            else:
-                self.green_times[i] += 1
-        # self.phase_nums[TSphase] += 1
+            else: self.green_times[i] += 1
         envtime = self.eng.get_current_time()
         return {
             "TSflow": TSflow,
@@ -781,11 +778,11 @@ class CityFlowEnv:
     def get_green_times(self):
         return np.mean(
             [
-                np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0])
+                np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0 and l not in {2, 3, 6, 10}])
                 for inter in self.list_intersection
             ]
         )
-
+      
     def get_phase_skips(self):
         return np.mean(
             [
