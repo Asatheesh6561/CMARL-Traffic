@@ -779,28 +779,22 @@ class CityFlowEnv:
         return self.eng.get_road_average_delay()
 
     def get_green_times(self):
-        return np.mean(
-            [
-                np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0])
-                for inter in self.list_intersection
-            ]
-        )
+        return [
+            np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0])
+            for inter in self.list_intersection
+        ]
 
     def get_phase_skips(self):
-        return np.mean(
-            [
-                np.mean([(ps < 16) for ps in inter.TS.phase_skips])
-                for inter in self.list_intersection
-            ]
-        )
+        return [
+            np.mean([(ps < 16) for ps in inter.TS.phase_skips])
+            for inter in self.list_intersection
+        ]
 
     def get_green_skips(self):
-        return np.mean(
-            [
-                np.mean([(gs < 4) for gs in inter.TS.green_skips])
-                for inter in self.list_intersection
-            ]
-        )
+        return [
+            np.mean([(gs < 4) for gs in inter.TS.green_skips])
+            for inter in self.list_intersection
+        ]
 
     def step(self, action):
         if self.config["ACTION_PATTERN"] == "switch":
@@ -829,9 +823,12 @@ class CityFlowEnv:
             ),
             "individual_rewards": all_reward,
             "total_reward": all_reward.sum(),
-            "green_times": self.get_green_times(),
-            "phase_skips": self.get_phase_skips(),
-            "green_skips": self.get_green_skips(),
+            "green_times": np.mean(self.get_green_times()),
+            "phase_skips": np.mean(self.get_phase_skips()),
+            "green_skips": np.mean(self.get_green_skips()),
+            "individual_green_times": np.array(self.get_green_times()),
+            "individual_phase_skips": np.array(self.get_phase_skips()),
+            "individual_green_skips": np.array(self.get_green_skips()),
         }
 
         return state, all_reward.mean(), done, infos

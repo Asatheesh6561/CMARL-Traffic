@@ -171,3 +171,56 @@ threads unset, auto use 16 threads
 
 [INFO 14:44:42] main t_env: 246960 / 500000
 [INFO 14:44:42] main Estimated time left: 4 hours, 45 minutes, 33 seconds. Time passed: 4 hours, 47 minutes, 32 seconds
+[INFO 14:50:27] main t_env: 252000 / 500000
+[INFO 14:50:27] main Estimated time left: 4 hours, 43 minutes, 4 seconds. Time passed: 4 hours, 53 minutes, 17 seconds
+[INFO 14:50:50] main Recent Stats | t_env:     252000 | Episode:     5600
+
+[INFO 14:55:58] main t_env: 257040 / 500000
+[INFO 14:55:58] main Estimated time left: 4 hours, 26 minutes, 3 seconds. Time passed: 4 hours, 58 minutes, 48 seconds
+[INFO 15:01:36] main t_env: 262080 / 500000
+[INFO 15:01:36] main Estimated time left: 4 hours, 25 minutes, 46 seconds. Time passed: 5 hours, 4 minutes, 26 seconds
+[INFO 15:01:58] main Recent Stats | t_env:     262080 | Episode:     5824
+
+[INFO 15:07:13] main t_env: 267120 / 500000
+[INFO 15:07:13] main Estimated time left: 4 hours, 19 minutes, 32 seconds. Time passed: 5 hours, 10 minutes, 3 seconds
+[INFO 15:12:48] main t_env: 272160 / 500000
+[INFO 15:12:48] main Estimated time left: 4 hours, 12 minutes, 22 seconds. Time passed: 5 hours, 15 minutes, 38 seconds
+[INFO 15:13:11] main Recent Stats | t_env:     272160 | Episode:     6048
+
+[INFO 15:18:26] main t_env: 277200 / 500000
+[INFO 15:18:26] main Estimated time left: 4 hours, 8 minutes, 59 seconds. Time passed: 5 hours, 21 minutes, 16 seconds
+[INFO 15:24:08] main t_env: 282240 / 500000
+[INFO 15:24:08] main Estimated time left: 4 hours, 6 minutes, 21 seconds. Time passed: 5 hours, 26 minutes, 58 seconds
+[INFO 15:24:30] main Recent Stats | t_env:     282240 | Episode:     6272
+
+[INFO 15:29:54] main t_env: 287280 / 500000
+[INFO 15:29:54] main Estimated time left: 4 hours, 3 minutes, 0 seconds. Time passed: 5 hours, 32 minutes, 43 seconds
+[INFO 15:35:28] main t_env: 292320 / 500000
+[INFO 15:35:28] main Estimated time left: 3 hours, 49 minutes, 29 seconds. Time passed: 5 hours, 38 minutes, 18 seconds
+[INFO 15:35:49] main Recent Stats | t_env:     292320 | Episode:     6496
+
+[INFO 15:41:06] main t_env: 297360 / 500000
+[INFO 15:41:06] main Estimated time left: 3 hours, 46 minutes, 37 seconds. Time passed: 5 hours, 43 minutes, 56 seconds
+[INFO 15:46:51] main t_env: 302400 / 500000
+[INFO 15:46:51] main Estimated time left: 3 hours, 45 minutes, 38 seconds. Time passed: 5 hours, 49 minutes, 41 seconds
+[INFO 15:47:13] main Recent Stats | t_env:     302400 | Episode:     6720
+
+[INFO 15:52:26] main t_env: 307440 / 500000
+[INFO 15:52:26] main Estimated time left: 3 hours, 33 minutes, 20 seconds. Time passed: 5 hours, 55 minutes, 16 seconds
+[INFO 15:58:10] main t_env: 312480 / 500000
+[INFO 15:58:10] main Estimated time left: 3 hours, 32 minutes, 52 seconds. Time passed: 6 hours, 59 seconds
+[INFO 15:58:33] main Recent Stats | t_env:     312480 | Episode:     6944
+
+[INFO 16:03:54] main t_env: 317520 / 500000
+[INFO 16:03:54] main Estimated time left: 3 hours, 27 minutes, 59 seconds. Time passed: 6 hours, 6 minutes, 44 seconds
+[INFO 16:09:36] main t_env: 322560 / 500000
+[INFO 16:09:36] main Estimated time left: 3 hours, 20 minutes, 16 seconds. Time passed: 6 hours, 12 minutes, 25 seconds
+[INFO 16:09:59] main Recent Stats | t_env:     322560 | Episode:     7168
+
+[INFO 16:15:13] main t_env: 327600 / 500000
+[INFO 16:15:13] main Estimated time left: 3 hours, 12 minutes, 36 seconds. Time passed: 6 hours, 18 minutes, 3 seconds
+[INFO 16:20:50] main t_env: 332640 / 500000
+[INFO 16:20:50] main Estimated time left: 3 hours, 6 minutes, 19 seconds. Time passed: 6 hours, 23 minutes, 40 seconds
+[INFO 16:21:13] main Recent Stats | t_env:     332640 | Episode:     7392
+
+slurmstepd: error: *** JOB 3320089 ON gammagpu03 CANCELLED AT 2024-11-12T16:25:59 ***

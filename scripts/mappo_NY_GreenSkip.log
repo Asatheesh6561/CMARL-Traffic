@@ -183,3 +183,52 @@ threads unset, auto use 16 threads
 
 [INFO 14:44:25] main t_env: 267120 / 500000
 [INFO 14:44:25] main Estimated time left: 4 hours, 5 minutes, 26 seconds. Time passed: 4 hours, 50 minutes, 19 seconds
+[INFO 14:49:41] main t_env: 272160 / 500000
+[INFO 14:49:41] main Estimated time left: 3 hours, 57 minutes, 22 seconds. Time passed: 4 hours, 55 minutes, 34 seconds
+[INFO 14:50:00] main Recent Stats | t_env:     272160 | Episode:     6048
+
+[INFO 14:54:56] main t_env: 277200 / 500000
+[INFO 14:54:56] main Estimated time left: 3 hours, 52 minutes, 22 seconds. Time passed: 5 hours, 49 seconds
+[INFO 15:00:12] main t_env: 282240 / 500000
+[INFO 15:00:12] main Estimated time left: 3 hours, 47 minutes, 17 seconds. Time passed: 5 hours, 6 minutes, 5 seconds
+[INFO 15:00:31] main Recent Stats | t_env:     282240 | Episode:     6272
+
+[INFO 15:05:40] main t_env: 287280 / 500000
+[INFO 15:05:40] main Estimated time left: 3 hours, 50 minutes, 49 seconds. Time passed: 5 hours, 11 minutes, 33 seconds
+[INFO 15:11:04] main t_env: 292320 / 500000
+[INFO 15:11:04] main Estimated time left: 3 hours, 42 minutes, 38 seconds. Time passed: 5 hours, 16 minutes, 57 seconds
+[INFO 15:11:24] main Recent Stats | t_env:     292320 | Episode:     6496
+
+[INFO 15:16:27] main t_env: 297360 / 500000
+[INFO 15:16:27] main Estimated time left: 3 hours, 36 minutes, 16 seconds. Time passed: 5 hours, 22 minutes, 20 seconds
+[INFO 15:21:51] main t_env: 302400 / 500000
+[INFO 15:21:51] main Estimated time left: 3 hours, 31 minutes, 59 seconds. Time passed: 5 hours, 27 minutes, 44 seconds
+[INFO 15:22:11] main Recent Stats | t_env:     302400 | Episode:     6720
+
+[INFO 15:27:17] main t_env: 307440 / 500000
+[INFO 15:27:17] main Estimated time left: 3 hours, 27 minutes, 21 seconds. Time passed: 5 hours, 33 minutes, 10 seconds
+[INFO 15:32:35] main t_env: 312480 / 500000
+[INFO 15:32:35] main Estimated time left: 3 hours, 17 minutes, 16 seconds. Time passed: 5 hours, 38 minutes, 28 seconds
+[INFO 15:32:55] main Recent Stats | t_env:     312480 | Episode:     6944
+
+[INFO 15:38:00] main t_env: 317520 / 500000
+[INFO 15:38:00] main Estimated time left: 3 hours, 16 minutes, 16 seconds. Time passed: 5 hours, 43 minutes, 53 seconds
+[INFO 15:43:28] main t_env: 322560 / 500000
+[INFO 15:43:28] main Estimated time left: 3 hours, 12 minutes, 28 seconds. Time passed: 5 hours, 49 minutes, 21 seconds
+[INFO 15:43:48] main Recent Stats | t_env:     322560 | Episode:     7168
+
+[INFO 15:48:54] main t_env: 327600 / 500000
+[INFO 15:48:54] main Estimated time left: 3 hours, 5 minutes, 47 seconds. Time passed: 5 hours, 54 minutes, 47 seconds
+[INFO 15:54:04] main t_env: 332640 / 500000
+[INFO 15:54:04] main Estimated time left: 2 hours, 51 minutes, 24 seconds. Time passed: 5 hours, 59 minutes, 57 seconds
+[INFO 15:54:23] main Recent Stats | t_env:     332640 | Episode:     7392
+
+[INFO 15:59:24] main t_env: 337680 / 500000
+[INFO 15:59:24] main Estimated time left: 2 hours, 51 minutes, 40 seconds. Time passed: 6 hours, 5 minutes, 17 seconds
+[INFO 16:04:51] main t_env: 342720 / 500000
+[INFO 16:04:51] main Estimated time left: 2 hours, 50 minutes, 18 seconds. Time passed: 6 hours, 10 minutes, 44 seconds
+[INFO 16:05:14] main Recent Stats | t_env:     342720 | Episode:     7616
+
+[INFO 16:10:33] main t_env: 347760 / 500000
+[INFO 16:10:33] main Estimated time left: 2 hours, 52 minutes, 0 seconds. Time passed: 6 hours, 16 minutes, 26 seconds
+/var/spool/slurm/slurmd.spool/job3320070/slurm_script: line 13: 1719308 Segmentation fault      (core dumped) python main.py --config="MARL/configs/algs/$1.yaml" --cityflow-config="configs/cityflow/$2.yml" --constraint=$3 --seed=$4

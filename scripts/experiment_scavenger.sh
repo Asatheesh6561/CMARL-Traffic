@@ -10,5 +10,5 @@
 cd ..
 source /nfshomes/anirudhs/.bashrc
 conda activate ctraffic
-python main.py --config="MARL/configs/algs/$1.yaml" --cityflow-config="configs/cityflow/$2.yml" --constraint=$3 --seed=$4
+python main.py --config="MARL/configs/algs/$1.yaml" --cityflow-config="configs/cityflow/$2.yml" --constraint=$3 --seed=$4 --enable-wandb
 wait
