@@ -13,7 +13,7 @@ class FlattenWrapper(gym.Wrapper):
         return states
 
     def step(self, actions):
-        actions = np.array(actions).reshape((self.agent_count,))
+        actions = actions.reshape((self.agent_count,))
         states, rewards, done, infos = self.env.step(actions)
         states = states.reshape((self.agent_count, -1))
         rewards = rewards.flatten()

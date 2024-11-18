@@ -3,6 +3,8 @@ from functools import partial
 from MARL.components.episode_buffer import EpisodeBatch
 import numpy as np
 import time
+import faulthandler
+
 
 class EpisodeRunner:
     def __init__(self, args, logger):
@@ -56,13 +58,35 @@ class EpisodeRunner:
         self.env.reset()
         self.t = 0
 
+    def compute_reward(self, env_info):
+        reward = env_info["total_reward"]
+        if self.args.constraint == "PhaseSkip":
+            reward -= env_info["phase_skips"] * self.args.phase_skip_penalty
+        elif self.args.constraint == "GreenSkip":
+            reward -= env_info["green_skips"] * self.args.green_skip_penalty
+        elif self.args.constraint == "GreenTime":
+            reward -= env_info["green_times"] * self.args.green_time_penalty
+        else:
+            pass
+        return reward
+
+    def get_cost(self, env_info):
+        if self.args.constraint == "PhaseSkip":
+            return env_info["phase_skips"]
+        elif self.args.constraint == "GreenSkip":
+            return env_info["green_skips"]
+        elif self.args.constraint == "GreenTime":
+            return env_info["green_times"]
+        else:
+            return 0
+
     def run(self, test_mode=False):
         self.reset()
         self.test_rewards = []
         terminated = False
         episode_return = 0
         self.mac.init_hidden(batch_size=self.batch_size)
-
+        save_probs = self.args.config.get("save_probs", False)
         while not terminated:
             pre_transition_data = {
                 "state": [self.env.get_state()],
@@ -75,7 +99,10 @@ class EpisodeRunner:
             # Pass the entire batch of experiences up till now to the agents
             # Receive the actions for each agent at this timestep in a batch of size 1
 
-            if self.args.config["mac"] == "mappo_mac" or self.args.config["mac"] == "maddpg_mac":
+            if (
+                self.args.config["mac"] == "mappo_mac"
+                or self.args.config["mac"] == "maddpg_mac"
+            ):
                 actions = self.mac.select_actions(
                     self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode
                 )
@@ -90,18 +117,39 @@ class EpisodeRunner:
                     lbda_indices=None,
                     test_mode=test_mode,
                 )
-            reward, terminated, env_info = self.env.step(actions[0].reshape(-1).cpu())
+            if save_probs:
+                actions, probs = actions
+            else:
+                actions = actions
+            MAX_RETRIES = 10
+            RETRY_DELAY = 0.5
+            retries = 0
+            while retries < MAX_RETRIES:
+                try:
+                    reward, terminated, env_info = self.env.step(actions.cpu().numpy())
+                    break
+                except Exception as e:
+                    print(f"Error! Retrying...")
+                    time.sleep(RETRY_DELAY)
+                    retries += 1
+            else:
+                print(
+                    f"Failed to communicate with environment after {MAX_RETRIES} attempts."
+                )
             episode_return += reward
             if test_mode:
-                self.test_rewards.append(env_info["total_reward"])
+                self.test_rewards.append(self.compute_reward(env_info))
             else:
-                self.train_rewards.append(env_info["total_reward"])
+                self.train_rewards.append(self.compute_reward(env_info))
             post_transition_data = {
                 "actions": actions[0].reshape(-1).to("cpu").detach(),
                 "reward": [(reward,)],
                 "terminated": [(terminated != env_info.get("episode_limit", False),)],
                 "individual_rewards": env_info["individual_rewards"],
+                "costs": [(self.get_cost(env_info),)],
             }
+            if save_probs:
+                post_transition_data["probs"] = probs.unsqueeze(1).to("cpu").detach()
 
             self.batch.update(post_transition_data, ts=self.t)
 
@@ -124,14 +172,32 @@ class EpisodeRunner:
         self.batch.update(
             {"actions": actions[0].reshape(-1).to("cpu").detach()}, ts=self.t
         )
-            
+
         if not test_mode:
             self.t_env += self.t
-            self.train_reward = sum(self.train_rewards) / self.t_env * self.episode_limit
-            return self.batch, self.train_reward, env_info
+            self.train_reward = (
+                sum(self.train_rewards) / self.t_env * self.episode_limit
+            )
+            for k in env_info:
+                if k in [
+                    "average_time",
+                    "average_delay",
+                    "throughput",
+                    "average_wait_time",
+                ]:
+                    self.train_stats[k] = env_info[k]
+            return self.batch, self.train_reward, self.train_stats
         else:
             self.test_reward = sum(self.test_rewards) / self.t * self.episode_limit
-            return self.test_reward, env_info
+            for k in env_info:
+                if k in [
+                    "average_time",
+                    "average_delay",
+                    "throughput",
+                    "average_wait_time",
+                ]:
+                    self.test_stats[k] = env_info[k]
+            return self.test_reward, self.test_stats
 
     def _log(self, returns, stats, prefix):
         self.logger.log_stat(prefix + "return_mean", np.mean(returns), self.t_env)

@@ -1,0 +1,897 @@
+[INFO 11:32:52] main Experiment Parameters:
+|                                      | HyperParameter Value                                              |
+|:-------------------------------------|:------------------------------------------------------------------|
+| CM_selected_inner                    |                                                                   |
+| NM_lane_embedding_size               | 32                                                                |
+| NM_phase_loss_weight                 | 0                                                                 |
+| NM_phase_loss_with_replay            | False                                                             |
+| NM_road_predict_hidden               | 32                                                                |
+| NM_scale_by_lane_number              | False                                                             |
+| NM_volume_loss_weight                | 0                                                                 |
+| agent                                |                                                                   |
+| cityflow_log                         |                                                                   |
+| config.action_selector               | multinomial                                                       |
+| config.actor_input_seq_str           | o_la                                                              |
+| config.agent                         | n_rnn                                                             |
+| config.agent_output_type             | pi_logits                                                         |
+| config.batch_size                    | 1                                                                 |
+| config.batch_size_run                | 1                                                                 |
+| config.buffer_cpu_only               | True                                                              |
+| config.buffer_size                   | 1                                                                 |
+| config.checkpoint_path               |                                                                   |
+| config.cost_limit                    | 0.0                                                               |
+| config.critic_coef                   | 0.5                                                               |
+| config.critic_input_seq_str          | o                                                                 |
+| config.critic_type                   | mappo_rnn_critic_share                                            |
+| config.entropy_coef                  | 0                                                                 |
+| config.eps_clip                      | 0.15                                                              |
+| config.epsilon_anneal_time           | 500000                                                            |
+| config.epsilon_finish                | 0.05                                                              |
+| config.epsilon_start                 | 1.0                                                               |
+| config.evaluate                      | False                                                             |
+| config.gae_lambda                    | 0.95                                                              |
+| config.gain                          | 0.01                                                              |
+| config.gamma                         | 0.985                                                             |
+| config.grad_norm_clip                | 10                                                                |
+| config.hidden_dim                    | 128                                                               |
+| config.learner                       | actor_critic_learner                                              |
+| config.learner_log_interval          | 10000                                                             |
+| config.local_results_path            | /cmlscratch/anirudhs/cmarl_traffic                                |
+| config.log_interval                  | 10000                                                             |
+| config.lr                            | 0.0005                                                            |
+| config.mac                           | mappo_mac                                                         |
+| config.mask_before_softmax           | True                                                              |
+| config.mini_epochs                   | 2                                                                 |
+| config.n_lambda                      | 51                                                                |
+| config.name                          | maa2cc                                                            |
+| config.obs_agent_id                  | True                                                              |
+| config.obs_individual_obs            | False                                                             |
+| config.obs_last_action               | False                                                             |
+| config.optim                         | Adam                                                              |
+| config.optim_alpha                   | 0.99                                                              |
+| config.optim_eps                     | 1e-05                                                             |
+| config.q_nstep                       | 5                                                                 |
+| config.reg_coef                      | 0.01                                                              |
+| config.run                           | maa2cc_run                                                        |
+| config.runner                        | episode                                                           |
+| config.runner_log_interval           | 10000                                                             |
+| config.sampling_lambda_index         | 0                                                                 |
+| config.save_model                    | False                                                             |
+| config.save_model_interval           | 1460000                                                           |
+| config.save_probs                    | True                                                              |
+| config.save_replay                   | False                                                             |
+| config.standardise_returns           | False                                                             |
+| config.standardise_rewards           | True                                                              |
+| config.t_max                         | 500000                                                            |
+| config.target_update_interval        | 200                                                               |
+| config.target_update_interval_or_tau | 0.01                                                              |
+| config.test_greedy                   | True                                                              |
+| config.test_interval                 | 5000                                                              |
+| config.test_nepisode                 | 10                                                                |
+| config.use_cuda                      | True                                                              |
+| config.use_double_q                  | True                                                              |
+| config.use_individual_rewards        | True                                                              |
+| config.use_layer_norm                | True                                                              |
+| config.use_loss_normalization        | False                                                             |
+| config.use_mean_team_reward          | True                                                              |
+| config.use_n_lambda                  | False                                                             |
+| config.use_orthogonal                | True                                                              |
+| config.use_reward_normalization      | False                                                             |
+| config.use_sample_prob_weights       | True                                                              |
+| config.use_single_lambda_sampling    | False                                                             |
+| config.use_tensorboard               | False                                                             |
+| config.use_wandb                     | True                                                              |
+| config.visualize                     | False                                                             |
+| config.visualize_interval            | 500000                                                            |
+| config.wandb_project_name            | ctraffic                                                          |
+| config.whittle_hidden_dim            | 128                                                               |
+| constraint                           | None                                                              |
+| development                          | False                                                             |
+| enable_wandb                         | True                                                              |
+| env                                  | ctraffic                                                          |
+| evaluate_interval                    | 10                                                                |
+| evaluate_round                       | 10                                                                |
+| feature_hidden_size                  | 512                                                               |
+| fixed_time                           | 30                                                                |
+| gamma                                | 0.99                                                              |
+| gammas                               | 0.99                                                              |
+| gpu_to_use                           |                                                                   |
+| green_skip_penalty                   | 0.2                                                               |
+| green_time_penalty                   | 0.2                                                               |
+| learning_rate                        | 0.0001                                                            |
+| log_folder                           | logs/                                                             |
+| log_interval                         | 100                                                               |
+| main                                 |                                                                   |
+| mode                                 | train                                                             |
+| model                                |                                                                   |
+| model_save_path                      |                                                                   |
+| multi_agent                          |                                                                   |
+| n_frames                             | 1000000                                                           |
+| n_steps                              | 5                                                                 |
+| name                                 | maa2cc                                                            |
+| no_cuda                              | False                                                             |
+| phase_skip_penalty                   | 0.2                                                               |
+| preload_model_file                   |                                                                   |
+| render_steps                         | -1                                                                |
+| results_file                         | /cmlscratch/anirudhs/ctraffic/results/maa2cc_HZ_None_39010304.pkl |
+| results_path                         | /cmlscratch/anirudhs/ctraffic/results                             |
+| save_interval                        | 0                                                                 |
+| seed                                 | 39010304                                                          |
+| simulate_time                        | 360                                                               |
+| target_reward                        | 1e+100                                                            |
+| tensorboardx_comment                 |                                                                   |
+| test_round                           | 0                                                                 |
+| threads                              | 24                                                                |
+| use_cuda                             | True                                                              |
+| wandb_api_key                        |                                                                   |
+| wandb_entity_name                    | anirudh-satheesh                                                  |
+| wandb_project_name                   | ctraffic                                                          |
+| wandb_sync_mode                      | online                                                            |
+| work_folder                          | ./                                                                |
+| wrapper_model                        |                                                                   |
+[INFO 11:32:54] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| costs              | (1,)     |         |               |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 3264.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+[INFO 11:32:59] main Beginning training for 500000 timesteps
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+cuda:0
+/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/stdout_capturing.py:179: UserWarning: tee_stdout.wait timeout. Forcibly terminating.
+  warnings.warn("tee_stdout.wait timeout. Forcibly terminating.")
+/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/sacred/stdout_capturing.py:185: UserWarning: tee_stderr.wait timeout. Forcibly terminating.
+  warnings.warn("tee_stderr.wait timeout. Forcibly terminating.")
+[DEBUG 11:33:13] ctraffic Stopping Heartbeat
+[ERROR 11:33:13] ctraffic Failed after 0:00:22!
+Traceback (most recent calls WITHOUT Sacred internals):
+  File "/nfshomes/anirudhs/CMARL-Traffic/main.py", line 59, in main
+    run_REGISTRY[_config["config"]["run"]](_run, config, _log)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/run/episode_run.py", line 58, in run
+    run_sequential(args=args, logger=logger)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/run/episode_run.py", line 206, in run_sequential
+    learner.train(episode_sample, runner.t_env, episode)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/learners/actor_critic_learner.py", line 92, in train
+    cost_advantages, cost_critic_stats = self.train_critic_sequential(
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/learners/actor_critic_learner.py", line 204, in train_critic_sequential
+    agent_outs = target_critic.forward(batch, t=t)
+  File "/nfshomes/anirudhs/CMARL-Traffic/MARL/modules/critics/mappo_rnn_critic_share.py", line 43, in forward
+    x = F.relu(self.fc1(inputs)).view(-1, self.hidden_dim)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cmlscratch/anirudhs/miniconda/envs/ctraffic/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)

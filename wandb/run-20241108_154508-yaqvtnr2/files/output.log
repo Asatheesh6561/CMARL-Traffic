@@ -1,0 +1,408 @@
+[INFO 15:45:08] main Experiment Parameters:
+|                                   | HyperParameter Value                  |
+|:----------------------------------|:--------------------------------------|
+| CM_selected_inner                 |                                       |
+| NM_lane_embedding_size            | 32                                    |
+| NM_phase_loss_weight              | 0                                     |
+| NM_phase_loss_with_replay         | False                                 |
+| NM_road_predict_hidden            | 32                                    |
+| NM_scale_by_lane_number           | False                                 |
+| NM_volume_loss_weight             | 0                                     |
+| agent                             |                                       |
+| cityflow_log                      |                                       |
+| config.action_selector            | multinomial                           |
+| config.actor_input_seq_str        | o_la                                  |
+| config.agent                      | n_rnn                                 |
+| config.agent_output_type          | pi_logits                             |
+| config.batch_size                 | 8                                     |
+| config.batch_size_run             | 8                                     |
+| config.buffer_cpu_only            | True                                  |
+| config.buffer_size                | 8                                     |
+| config.checkpoint_path            |                                       |
+| config.critic_coef                | 0.5                                   |
+| config.critic_input_seq_str       | o                                     |
+| config.critic_type                | mappo_rnn_critic_share                |
+| config.entropy_coef               | 0                                     |
+| config.eps_clip                   | 0.15                                  |
+| config.epsilon_anneal_time        | 2000000                               |
+| config.epsilon_finish             | 0.05                                  |
+| config.epsilon_start              | 1.0                                   |
+| config.evaluate                   | False                                 |
+| config.gae_lambda                 | 0.95                                  |
+| config.gain                       | 0.01                                  |
+| config.gamma                      | 0.985                                 |
+| config.grad_norm_clip             | 10                                    |
+| config.hidden_dim                 | 128                                   |
+| config.layer_num                  | 2                                     |
+| config.learner                    | local_ppo_learner                     |
+| config.learner_log_interval       | 10000                                 |
+| config.local_results_path         | /cmlscratch/anirudhs/cmarl_traffic    |
+| config.log_interval               | 10000                                 |
+| config.lr                         | 5e-05                                 |
+| config.mac                        | mappo_mac                             |
+| config.mask_before_softmax        | True                                  |
+| config.mini_epochs                | 2                                     |
+| config.n_lambda                   | 51                                    |
+| config.name                       | ippo_ir                               |
+| config.obs_agent_id               | False                                 |
+| config.obs_last_action            | True                                  |
+| config.optim                      | Adam                                  |
+| config.optim_alpha                | 0.99                                  |
+| config.optim_eps                  | 1e-05                                 |
+| config.reg_coef                   | 0.01                                  |
+| config.run                        | ippo_run                              |
+| config.runner                     | parallel                              |
+| config.runner_log_interval        | 10000                                 |
+| config.sampling_lambda_index      | 0                                     |
+| config.save_model                 | False                                 |
+| config.save_model_interval        | 1460000                               |
+| config.save_probs                 | True                                  |
+| config.save_replay                | False                                 |
+| config.t_max                      | 2000000                               |
+| config.target_update_interval     | 200                                   |
+| config.test_greedy                | True                                  |
+| config.test_interval              | 20000                                 |
+| config.test_nepisode              | 8                                     |
+| config.use_cuda                   | True                                  |
+| config.use_double_q               | True                                  |
+| config.use_individual_rewards     | True                                  |
+| config.use_layer_norm             | True                                  |
+| config.use_loss_normalization     | False                                 |
+| config.use_mean_team_reward       | True                                  |
+| config.use_n_lambda               | False                                 |
+| config.use_orthogonal             | True                                  |
+| config.use_reward_normalization   | False                                 |
+| config.use_sample_prob_weights    | True                                  |
+| config.use_single_lambda_sampling | False                                 |
+| config.use_tensorboard            | False                                 |
+| config.use_wandb                  | True                                  |
+| config.visualize                  | False                                 |
+| config.visualize_interval         | 500000                                |
+| config.wandb_project_name         | ctraffic                              |
+| config.whittle_hidden_dim         | 128                                   |
+| constraint                        | green_skip                            |
+| development                       | False                                 |
+| enable_wandb                      | True                                  |
+| env                               | ctraffic                              |
+| evaluate_interval                 | 10                                    |
+| evaluate_round                    | 10                                    |
+| feature_hidden_size               | 512                                   |
+| fixed_time                        | 30                                    |
+| gamma                             | 0.99                                  |
+| gammas                            | 0.99                                  |
+| gpu_to_use                        |                                       |
+| green_skip_penalty                | 0.2                                   |
+| green_time_penalty                | 0.2                                   |
+| learning_rate                     | 0.0001                                |
+| log_folder                        | logs/                                 |
+| log_interval                      | 100                                   |
+| main                              |                                       |
+| mode                              | train                                 |
+| model                             |                                       |
+| model_save_path                   |                                       |
+| multi_agent                       |                                       |
+| n_frames                          | 1000000                               |
+| n_steps                           | 5                                     |
+| name                              | ippo                                  |
+| no_cuda                           | False                                 |
+| phase_skip_penalty                | 0.2                                   |
+| preload_model_file                |                                       |
+| render_steps                      | -1                                    |
+| results_path                      | /cmlscratch/anirudhs/ctraffic/results |
+| save_interval                     | 0                                     |
+| seed                              | 644817408                             |
+| simulate_time                     | 360                                   |
+| target_reward                     | 1e+100                                |
+| tensorboardx_comment              |                                       |
+| test_round                        | 0                                     |
+| threads                           | 16                                    |
+| use_cuda                          | True                                  |
+| wandb_api_key                     |                                       |
+| wandb_entity_name                 | anirudh-satheesh                      |
+| wandb_project_name                | ctraffic                              |
+| wandb_sync_mode                   | online                                |
+| work_folder                       | ./                                    |
+| wrapper_model                     |                                       |
+[INFO 15:45:10] main MDP Components:
+|                    | vshape   | group   | dtype         |
+|:-------------------|:---------|:--------|:--------------|
+| actions            | (1,)     | agents  | torch.int64   |
+| actions_onehot     | (8,)     | agents  | torch.float32 |
+| avail_actions      | (8,)     | agents  | torch.int32   |
+| filled             | (1,)     |         | torch.int64   |
+| individual_rewards | (1,)     | agents  |               |
+| mean_action        | (8,)     | agents  | torch.float32 |
+| obs                | 204      | agents  |               |
+| probs              | (8,)     | agents  | torch.float32 |
+| reward             | (1,)     |         |               |
+| state              | 3264.0   |         |               |
+| terminated         | (1,)     |         | torch.uint8   |
+| total_reward       | (1,)     |         |               |
+[INFO 15:45:20] main Beginning training for 2000000 timesteps
+[INFO 15:46:58] main Recent Stats | t_env:      11520 | Episode:       32
+
+[INFO 15:48:11] main t_env: 20160 / 2000000
+[INFO 15:48:11] main Estimated time left: 4 hours, 39 minutes, 4 seconds. Time passed: 2 minutes, 50 seconds
+new test result : -765.3098565833334
+[INFO 15:49:02] main Recent Stats | t_env:      23040 | Episode:       64
+
+[INFO 15:50:38] main Recent Stats | t_env:      34560 | Episode:       96
+
+[INFO 15:51:27] main t_env: 40320 / 2000000
+[INFO 15:51:27] main Estimated time left: 5 hours, 18 minutes, 3 seconds. Time passed: 6 minutes, 6 seconds
+[INFO 15:52:44] main Recent Stats | t_env:      46080 | Episode:      128
+
+[INFO 15:54:19] main Recent Stats | t_env:      57600 | Episode:      160
+
+[INFO 15:54:42] main t_env: 60480 / 2000000
+[INFO 15:54:42] main Estimated time left: 5 hours, 13 minutes, 37 seconds. Time passed: 9 minutes, 22 seconds
+[INFO 15:56:24] main Recent Stats | t_env:      69120 | Episode:      192
+
+[INFO 15:58:01] main t_env: 80640 / 2000000
+[INFO 15:58:01] main Estimated time left: 5 hours, 15 minutes, 2 seconds. Time passed: 12 minutes, 40 seconds
+[INFO 15:58:31] main Recent Stats | t_env:      80640 | Episode:      224
+
+[INFO 16:00:11] main Recent Stats | t_env:      92160 | Episode:      256
+
+[INFO 16:01:24] main t_env: 100800 / 2000000
+[INFO 16:01:24] main Estimated time left: 5 hours, 19 minutes, 13 seconds. Time passed: 16 minutes, 4 seconds
+[INFO 16:02:16] main Recent Stats | t_env:     103680 | Episode:      288
+
+[INFO 16:03:52] main Recent Stats | t_env:     115200 | Episode:      320
+
+[INFO 16:04:40] main t_env: 120960 / 2000000
+[INFO 16:04:40] main Estimated time left: 5 hours, 4 minutes, 12 seconds. Time passed: 19 minutes, 20 seconds
+[INFO 16:05:55] main Recent Stats | t_env:     126720 | Episode:      352
+
+[INFO 16:07:31] main Recent Stats | t_env:     138240 | Episode:      384
+
+[INFO 16:07:56] main t_env: 141120 / 2000000
+[INFO 16:07:56] main Estimated time left: 5 hours, 16 seconds. Time passed: 22 minutes, 35 seconds
+[INFO 16:09:35] main Recent Stats | t_env:     149760 | Episode:      416
+
+[INFO 16:11:11] main t_env: 161280 / 2000000
+[INFO 16:11:11] main Estimated time left: 4 hours, 56 minutes, 26 seconds. Time passed: 25 minutes, 50 seconds
+[INFO 16:11:38] main Recent Stats | t_env:     161280 | Episode:      448
+
+[INFO 16:13:14] main Recent Stats | t_env:     172800 | Episode:      480
+
+[INFO 16:14:28] main t_env: 181440 / 2000000
+[INFO 16:14:28] main Estimated time left: 4 hours, 56 minutes, 10 seconds. Time passed: 29 minutes, 7 seconds
+[INFO 16:15:18] main Recent Stats | t_env:     184320 | Episode:      512
+
+[INFO 16:16:54] main Recent Stats | t_env:     195840 | Episode:      544
+
+[INFO 16:17:41] main t_env: 201600 / 2000000
+[INFO 16:17:41] main Estimated time left: 4 hours, 47 minutes, 16 seconds. Time passed: 32 minutes, 20 seconds
+[INFO 16:18:56] main Recent Stats | t_env:     207360 | Episode:      576
+
+[INFO 16:20:33] main Recent Stats | t_env:     218880 | Episode:      608
+
+[INFO 16:20:57] main t_env: 221760 / 2000000
+[INFO 16:20:57] main Estimated time left: 4 hours, 48 minutes, 43 seconds. Time passed: 35 minutes, 37 seconds
+[INFO 16:22:37] main Recent Stats | t_env:     230400 | Episode:      640
+
+[INFO 16:24:10] main t_env: 241920 / 2000000
+[INFO 16:24:10] main Estimated time left: 4 hours, 39 minutes, 32 seconds. Time passed: 38 minutes, 49 seconds
+[INFO 16:24:33] main Recent Stats | t_env:     241920 | Episode:      672
+
+[INFO 16:26:01] main Recent Stats | t_env:     253440 | Episode:      704
+
+[INFO 16:27:06] main t_env: 262080 / 2000000
+[INFO 16:27:06] main Estimated time left: 4 hours, 13 minutes, 58 seconds. Time passed: 41 minutes, 46 seconds
+[INFO 16:27:52] main Recent Stats | t_env:     264960 | Episode:      736
+
+[INFO 16:29:22] main Recent Stats | t_env:     276480 | Episode:      768
+
+[INFO 16:30:07] main t_env: 282240 / 2000000
+[INFO 16:30:07] main Estimated time left: 4 hours, 16 minutes, 2 seconds. Time passed: 44 minutes, 46 seconds
+[INFO 16:31:15] main Recent Stats | t_env:     288000 | Episode:      800
+
+[INFO 16:32:43] main Recent Stats | t_env:     299520 | Episode:      832
+
+[INFO 16:33:06] main t_env: 302400 / 2000000
+[INFO 16:33:06] main Estimated time left: 4 hours, 11 minutes, 47 seconds. Time passed: 47 minutes, 45 seconds
+[INFO 16:34:38] main Recent Stats | t_env:     311040 | Episode:      864
+
+[INFO 16:36:08] main t_env: 322560 / 2000000
+[INFO 16:36:08] main Estimated time left: 4 hours, 11 minutes, 42 seconds. Time passed: 50 minutes, 47 seconds
+[INFO 16:36:33] main Recent Stats | t_env:     322560 | Episode:      896
+
+[INFO 16:38:01] main Recent Stats | t_env:     334080 | Episode:      928
+
+[INFO 16:39:07] main t_env: 342720 / 2000000
+[INFO 16:39:07] main Estimated time left: 4 hours, 5 minutes, 54 seconds. Time passed: 53 minutes, 46 seconds
+[INFO 16:39:53] main Recent Stats | t_env:     345600 | Episode:      960
+
+[INFO 16:41:19] main Recent Stats | t_env:     357120 | Episode:      992
+
+[INFO 16:42:02] main t_env: 362880 / 2000000
+[INFO 16:42:02] main Estimated time left: 3 hours, 57 minutes, 8 seconds. Time passed: 56 minutes, 42 seconds
+[INFO 16:43:10] main Recent Stats | t_env:     368640 | Episode:     1024
+
+[INFO 16:44:36] main Recent Stats | t_env:     380160 | Episode:     1056
+
+[INFO 16:44:58] main t_env: 383040 / 2000000
+[INFO 16:44:58] main Estimated time left: 3 hours, 54 minutes, 55 seconds. Time passed: 59 minutes, 37 seconds
+[INFO 16:46:30] main Recent Stats | t_env:     391680 | Episode:     1088
+
+[INFO 16:47:57] main t_env: 403200 / 2000000
+[INFO 16:47:57] main Estimated time left: 3 hours, 57 minutes, 1 seconds. Time passed: 1 hours, 2 minutes, 37 seconds
+[INFO 16:48:21] main Recent Stats | t_env:     403200 | Episode:     1120
+
+[INFO 16:49:50] main Recent Stats | t_env:     414720 | Episode:     1152
+
+[INFO 16:50:56] main t_env: 423360 / 2000000
+[INFO 16:50:56] main Estimated time left: 3 hours, 53 minutes, 9 seconds. Time passed: 1 hours, 5 minutes, 36 seconds
+[INFO 16:51:42] main Recent Stats | t_env:     426240 | Episode:     1184
+
+[INFO 16:53:09] main Recent Stats | t_env:     437760 | Episode:     1216
+
+[INFO 16:53:51] main t_env: 443520 / 2000000
+[INFO 16:53:51] main Estimated time left: 3 hours, 45 minutes, 9 seconds. Time passed: 1 hours, 8 minutes, 31 seconds
+[INFO 16:55:00] main Recent Stats | t_env:     449280 | Episode:     1248
+
+[INFO 16:56:27] main Recent Stats | t_env:     460800 | Episode:     1280
+
+[INFO 16:56:48] main t_env: 463680 / 2000000
+[INFO 16:56:48] main Estimated time left: 3 hours, 44 minutes, 1 seconds. Time passed: 1 hours, 11 minutes, 27 seconds
+[INFO 16:58:17] main Recent Stats | t_env:     472320 | Episode:     1312
+
+[INFO 16:59:44] main t_env: 483840 / 2000000
+[INFO 16:59:44] main Estimated time left: 3 hours, 41 minutes, 7 seconds. Time passed: 1 hours, 14 minutes, 24 seconds
+[INFO 17:00:10] main Recent Stats | t_env:     483840 | Episode:     1344
+
+[INFO 17:01:37] main Recent Stats | t_env:     495360 | Episode:     1376
+
+[INFO 17:02:42] main t_env: 504000 / 2000000
+[INFO 17:02:42] main Estimated time left: 3 hours, 39 minutes, 38 seconds. Time passed: 1 hours, 17 minutes, 21 seconds
+[INFO 17:03:28] main Recent Stats | t_env:     506880 | Episode:     1408
+
+[INFO 17:04:55] main Recent Stats | t_env:     518400 | Episode:     1440
+
+[INFO 17:05:40] main t_env: 524160 / 2000000
+[INFO 17:05:40] main Estimated time left: 3 hours, 37 minutes, 14 seconds. Time passed: 1 hours, 20 minutes, 19 seconds
+[INFO 17:06:49] main Recent Stats | t_env:     529920 | Episode:     1472
+
+[INFO 17:08:17] main Recent Stats | t_env:     541440 | Episode:     1504
+
+[INFO 17:08:40] main t_env: 544320 / 2000000
+[INFO 17:08:40] main Estimated time left: 3 hours, 36 minutes, 31 seconds. Time passed: 1 hours, 23 minutes, 19 seconds
+[INFO 17:10:11] main Recent Stats | t_env:     552960 | Episode:     1536
+
+[INFO 17:11:38] main t_env: 564480 / 2000000
+[INFO 17:11:38] main Estimated time left: 3 hours, 31 minutes, 20 seconds. Time passed: 1 hours, 26 minutes, 17 seconds
+[INFO 17:12:02] main Recent Stats | t_env:     564480 | Episode:     1568
+
+[INFO 17:13:29] main Recent Stats | t_env:     576000 | Episode:     1600
+
+[INFO 17:14:33] main t_env: 584640 / 2000000
+[INFO 17:14:33] main Estimated time left: 3 hours, 25 minutes, 32 seconds. Time passed: 1 hours, 29 minutes, 13 seconds
+[INFO 17:15:20] main Recent Stats | t_env:     587520 | Episode:     1632
+
+[INFO 17:16:48] main Recent Stats | t_env:     599040 | Episode:     1664
+
+[INFO 17:17:31] main t_env: 604800 / 2000000
+[INFO 17:17:31] main Estimated time left: 3 hours, 24 minutes, 47 seconds. Time passed: 1 hours, 32 minutes, 10 seconds
+[INFO 17:18:39] main Recent Stats | t_env:     610560 | Episode:     1696
+
+[INFO 17:20:05] main Recent Stats | t_env:     622080 | Episode:     1728
+
+[INFO 17:20:27] main t_env: 624960 / 2000000
+[INFO 17:20:27] main Estimated time left: 3 hours, 20 minutes, 10 seconds. Time passed: 1 hours, 35 minutes, 7 seconds
+[INFO 17:21:58] main Recent Stats | t_env:     633600 | Episode:     1760
+
+[INFO 17:23:25] main t_env: 645120 / 2000000
+[INFO 17:23:25] main Estimated time left: 3 hours, 19 minutes, 33 seconds. Time passed: 1 hours, 38 minutes, 5 seconds
+[INFO 17:23:50] main Recent Stats | t_env:     645120 | Episode:     1792
+
+[INFO 17:25:16] main Recent Stats | t_env:     656640 | Episode:     1824
+
+[INFO 17:26:20] main t_env: 665280 / 2000000
+[INFO 17:26:20] main Estimated time left: 3 hours, 13 minutes, 21 seconds. Time passed: 1 hours, 41 minutes, 0 seconds
+new test result : -734.4011556666667
+[INFO 17:27:04] main Recent Stats | t_env:     668160 | Episode:     1856
+
+[INFO 17:28:33] main Recent Stats | t_env:     679680 | Episode:     1888
+
+[INFO 17:29:17] main t_env: 685440 / 2000000
+[INFO 17:29:17] main Estimated time left: 3 hours, 11 minutes, 16 seconds. Time passed: 1 hours, 43 minutes, 56 seconds
+[INFO 17:30:24] main Recent Stats | t_env:     691200 | Episode:     1920
+
+[INFO 17:31:50] main Recent Stats | t_env:     702720 | Episode:     1952
+
+[INFO 17:32:12] main t_env: 705600 / 2000000
+[INFO 17:32:12] main Estimated time left: 3 hours, 7 minutes, 32 seconds. Time passed: 1 hours, 46 minutes, 51 seconds
+[INFO 17:33:39] main Recent Stats | t_env:     714240 | Episode:     1984
+
+[INFO 17:35:06] main t_env: 725760 / 2000000
+[INFO 17:35:06] main Estimated time left: 3 hours, 3 minutes, 41 seconds. Time passed: 1 hours, 49 minutes, 46 seconds
+[INFO 17:35:29] main Recent Stats | t_env:     725760 | Episode:     2016
+
+[INFO 17:36:57] main Recent Stats | t_env:     737280 | Episode:     2048
+
+[INFO 17:38:05] main t_env: 745920 / 2000000
+[INFO 17:38:05] main Estimated time left: 3 hours, 5 minutes, 29 seconds. Time passed: 1 hours, 52 minutes, 44 seconds
+[INFO 17:38:52] main Recent Stats | t_env:     748800 | Episode:     2080
+
+[INFO 17:40:19] main Recent Stats | t_env:     760320 | Episode:     2112
+
+[INFO 17:41:03] main t_env: 766080 / 2000000
+[INFO 17:41:03] main Estimated time left: 3 hours, 1 minutes, 29 seconds. Time passed: 1 hours, 55 minutes, 42 seconds
+[INFO 17:42:09] main Recent Stats | t_env:     771840 | Episode:     2144
+
+[INFO 17:43:36] main Recent Stats | t_env:     783360 | Episode:     2176
+
+[INFO 17:43:59] main t_env: 786240 / 2000000
+[INFO 17:43:59] main Estimated time left: 2 hours, 56 minutes, 54 seconds. Time passed: 1 hours, 58 minutes, 39 seconds
+[INFO 17:45:30] main Recent Stats | t_env:     794880 | Episode:     2208
+
+[INFO 17:46:59] main t_env: 806400 / 2000000
+[INFO 17:46:59] main Estimated time left: 2 hours, 57 minutes, 38 seconds. Time passed: 2 hours, 1 minutes, 39 seconds
+[INFO 17:47:24] main Recent Stats | t_env:     806400 | Episode:     2240
+
+[INFO 17:48:51] main Recent Stats | t_env:     817920 | Episode:     2272
+
+[INFO 17:49:58] main t_env: 826560 / 2000000
+[INFO 17:49:58] main Estimated time left: 2 hours, 53 minutes, 10 seconds. Time passed: 2 hours, 4 minutes, 37 seconds
+[INFO 17:50:44] main Recent Stats | t_env:     829440 | Episode:     2304
+
+[INFO 17:52:12] main Recent Stats | t_env:     840960 | Episode:     2336
+
+[INFO 17:52:55] main t_env: 846720 / 2000000
+[INFO 17:52:55] main Estimated time left: 2 hours, 49 minutes, 18 seconds. Time passed: 2 hours, 7 minutes, 35 seconds
+[INFO 17:54:01] main Recent Stats | t_env:     852480 | Episode:     2368
+
+[INFO 17:55:30] main Recent Stats | t_env:     864000 | Episode:     2400
+
+[INFO 17:55:52] main t_env: 866880 / 2000000
+[INFO 17:55:52] main Estimated time left: 2 hours, 45 minutes, 12 seconds. Time passed: 2 hours, 10 minutes, 31 seconds
+new test result : -703.1574574166666
+[INFO 17:57:19] main Recent Stats | t_env:     875520 | Episode:     2432
+
+[INFO 17:58:47] main t_env: 887040 / 2000000
+[INFO 17:58:47] main Estimated time left: 2 hours, 41 minutes, 8 seconds. Time passed: 2 hours, 13 minutes, 26 seconds
+[INFO 17:59:09] main Recent Stats | t_env:     887040 | Episode:     2464
+
+[INFO 18:00:36] main Recent Stats | t_env:     898560 | Episode:     2496
+
+[INFO 18:01:43] main t_env: 907200 / 2000000
+[INFO 18:01:43] main Estimated time left: 2 hours, 39 minutes, 29 seconds. Time passed: 2 hours, 16 minutes, 23 seconds
+[INFO 18:02:27] main Recent Stats | t_env:     910080 | Episode:     2528
+
+[INFO 18:03:55] main Recent Stats | t_env:     921600 | Episode:     2560
+
+[INFO 18:04:40] main t_env: 927360 / 2000000
+[INFO 18:04:40] main Estimated time left: 2 hours, 36 minutes, 27 seconds. Time passed: 2 hours, 19 minutes, 19 seconds
+[INFO 18:05:47] main Recent Stats | t_env:     933120 | Episode:     2592
+
+[INFO 18:07:14] main Recent Stats | t_env:     944640 | Episode:     2624
+
+[INFO 18:07:36] main t_env: 947520 / 2000000
+[INFO 18:07:36] main Estimated time left: 2 hours, 33 minutes, 17 seconds. Time passed: 2 hours, 22 minutes, 15 seconds
+[INFO 18:09:02] main Recent Stats | t_env:     956160 | Episode:     2656
+
+[INFO 18:10:28] main t_env: 967680 / 2000000
+[INFO 18:10:28] main Estimated time left: 2 hours, 26 minutes, 51 seconds. Time passed: 2 hours, 25 minutes, 8 seconds
+new test result : -683.6095609583335
+[INFO 18:10:49] main Recent Stats | t_env:     967680 | Episode:     2688

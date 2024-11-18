@@ -1,0 +1,51 @@
+{
+  "os":  "Linux-4.18.0-553.22.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python":  "3.9.0",
+  "startedAt":  "2024-11-08T18:20:52.577189Z",
+  "args":  [
+    "--config=MARL/configs/algs/ippo.yaml",
+    "--cityflow-config=configs/cityflow/HZ.yml",
+    "--constraint=None"
+  ],
+  "program":  "/nfshomes/anirudhs/CMARL-Traffic/main.py",
+  "codePath":  "main.py",
+  "git":  {
+    "remote":  "git@github.com:Asatheesh6561/CMARL-Traffic.git",
+    "commit":  "d93f9d6521da9769085a600e849a08304db3ee67"
+  },
+  "email":  "anirudh.satheesh@gmail.com",
+  "root":  "/nfshomes/anirudhs/CMARL-Traffic",
+  "host":  "tron55.umiacs.umd.edu",
+  "username":  "anirudhs",
+  "executable":  "/cmlscratch/anirudhs/miniconda/envs/ctraffic/bin/python",
+  "codePathLocal":  "main.py",
+  "cpu_count":  48,
+  "cpu_count_logical":  48,
+  "gpu":  "NVIDIA RTX A5000",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "41922560000",
+      "used":  "14779506688"
+    }
+  },
+  "memory":  {
+    "total":  "269777616896"
+  },
+  "cpu":  {
+    "count":  48,
+    "countLogical":  48
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA RTX A5000",
+      "memoryTotal":  "25757220864",
+      "cudaCores":  8192,
+      "architecture":  "Ampere"
+    }
+  ],
+  "slurm":  {
+    "job_id":  "3296866"
+  },
+  "cudaVersion":  "12.4"
+}

@@ -1,0 +1,57 @@
+Identity added: /nfshomes/anirudhs/.ssh/id_ecdsa (anirudhs@nexuscml00.umiacs.umd.edu)
+Identity added: /nfshomes/anirudhs/.ssh/id_ed25519 (anirudh.satheesh@gmail.com)
+[DEBUG 14:05:15] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:15] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:15] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:05:15] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:15] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 14:05:16] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[INFO 14:05:17] root Saving to FileStorageObserver in /cmlscratch/anirudhs/ctraffic/results/sacred.
+[DEBUG 14:05:18] ctraffic Using capture mode "fd"
+threads unset, auto use 24 threads
+[INFO 14:05:18] ctraffic Running command 'main'
+[INFO 14:05:18] ctraffic Started run with ID "275"
+[DEBUG 14:05:18] ctraffic Starting Heartbeat
+[DEBUG 14:05:18] main Started
+[INFO 14:05:18] main Experiment Parameters:
+[INFO 14:05:20] main MDP Components:
+[INFO 14:05:25] main Beginning training for 500000 timesteps
+[INFO 14:09:46] main t_env: 5040 / 500000
+[INFO 14:09:46] main Estimated time left: 7 hours, 8 minutes, 16 seconds. Time passed: 4 minutes, 21 seconds
+[INFO 14:14:26] main t_env: 10080 / 500000
+[INFO 14:14:26] main Estimated time left: 7 hours, 32 minutes, 32 seconds. Time passed: 9 minutes, 0 seconds
+[INFO 14:14:43] main Recent Stats | t_env:      10080 | Episode:      216
+agent_grad_norm:           0.0039	critic_grad_norm:         50.2285	critic_loss:               1.0323	pg_loss:                  -0.2868
+q_taken_mean:              0.9916	target_mean:               0.9933	td_error_abs:              0.8731	
+[INFO 14:19:08] main t_env: 15120 / 500000
+[INFO 14:19:08] main Estimated time left: 7 hours, 32 minutes, 44 seconds. Time passed: 13 minutes, 43 seconds
+[INFO 14:23:34] main t_env: 20160 / 500000
+[INFO 14:23:34] main Estimated time left: 7 hours, 1 minutes, 8 seconds. Time passed: 18 minutes, 8 seconds
+[INFO 14:23:51] main Recent Stats | t_env:      20160 | Episode:      440
+agent_grad_norm:           0.0021	critic_grad_norm:         32.8143	critic_loss:               0.6616	pg_loss:                   0.1007
+q_taken_mean:              0.7271	target_mean:               0.7164	td_error_abs:              0.6518	
+[INFO 14:27:44] main t_env: 25200 / 500000
+[INFO 14:27:44] main Estimated time left: 6 hours, 33 minutes, 23 seconds. Time passed: 22 minutes, 19 seconds
+[INFO 14:32:06] main t_env: 30240 / 500000
+[INFO 14:32:06] main Estimated time left: 6 hours, 46 minutes, 10 seconds. Time passed: 26 minutes, 40 seconds
+[INFO 14:32:20] main Recent Stats | t_env:      30240 | Episode:      664
+agent_grad_norm:           0.0009	critic_grad_norm:         27.5529	critic_loss:               0.5181	pg_loss:                   0.1255
+q_taken_mean:              0.6806	target_mean:               0.6087	td_error_abs:              0.5598	
+[INFO 14:36:02] main t_env: 35280 / 500000
+[INFO 14:36:02] main Estimated time left: 6 hours, 3 minutes, 50 seconds. Time passed: 30 minutes, 37 seconds
+[INFO 14:40:06] main t_env: 40320 / 500000
+[INFO 14:40:06] main Estimated time left: 6 hours, 10 minutes, 16 seconds. Time passed: 34 minutes, 41 seconds
+[INFO 14:40:21] main Recent Stats | t_env:      40320 | Episode:      888
+agent_grad_norm:           0.0001	critic_grad_norm:         21.6877	critic_loss:               0.4152	pg_loss:                  -0.0313
+q_taken_mean:              0.5612	target_mean:               0.5067	td_error_abs:              0.4832	
+[INFO 14:44:31] main t_env: 45360 / 500000
+[INFO 14:44:31] main Estimated time left: 6 hours, 38 minutes, 3 seconds. Time passed: 39 minutes, 5 seconds

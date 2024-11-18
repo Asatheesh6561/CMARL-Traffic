@@ -1,0 +1,101 @@
+Identity added: /nfshomes/anirudhs/.ssh/id_ecdsa (anirudhs@nexuscml00.umiacs.umd.edu)
+Identity added: /nfshomes/anirudhs/.ssh/id_ed25519 (anirudh.satheesh@gmail.com)
+[DEBUG 12:54:20] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:20] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 12:54:21] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/nfshomes/anirudhs/CMARL-Traffic, stdin=<valid stream>, shell=False, universal_newlines=False)
+[INFO 12:54:22] root Saving to FileStorageObserver in /cmlscratch/anirudhs/ctraffic/results/sacred.
+[DEBUG 12:54:23] ctraffic Using capture mode "fd"
+threads unset, auto use 24 threads
+[INFO 12:54:23] ctraffic Running command 'main'
+[INFO 12:54:23] ctraffic Started run with ID "264"
+[DEBUG 12:54:23] ctraffic Starting Heartbeat
+[DEBUG 12:54:23] main Started
+[INFO 12:54:24] main Experiment Parameters:
+[INFO 12:54:25] main MDP Components:
+[INFO 12:54:31] main Beginning training for 500000 timesteps
+[INFO 12:58:41] main t_env: 5040 / 500000
+[INFO 12:58:41] main Estimated time left: 6 hours, 48 minutes, 53 seconds. Time passed: 4 minutes, 9 seconds
+[INFO 13:03:31] main t_env: 10080 / 500000
+[INFO 13:03:31] main Estimated time left: 7 hours, 50 minutes, 29 seconds. Time passed: 9 minutes, 0 seconds
+[INFO 13:03:55] main Recent Stats | t_env:      10080 | Episode:      224
+
+[INFO 13:08:29] main t_env: 15120 / 500000
+[INFO 13:08:29] main Estimated time left: 7 hours, 57 minutes, 35 seconds. Time passed: 13 minutes, 58 seconds
+[INFO 13:13:15] main t_env: 20160 / 500000
+[INFO 13:13:15] main Estimated time left: 7 hours, 34 minutes, 49 seconds. Time passed: 18 minutes, 44 seconds
+[INFO 13:13:35] main Recent Stats | t_env:      20160 | Episode:      448
+
+[INFO 13:17:59] main t_env: 25200 / 500000
+[INFO 13:17:59] main Estimated time left: 7 hours, 25 minutes, 37 seconds. Time passed: 23 minutes, 28 seconds
+[INFO 13:22:39] main t_env: 30240 / 500000
+[INFO 13:22:39] main Estimated time left: 7 hours, 14 minutes, 10 seconds. Time passed: 28 minutes, 8 seconds
+[INFO 13:23:02] main Recent Stats | t_env:      30240 | Episode:      672
+
+[INFO 13:27:04] main t_env: 35280 / 500000
+[INFO 13:27:04] main Estimated time left: 6 hours, 47 minutes, 33 seconds. Time passed: 32 minutes, 33 seconds
+[INFO 13:31:32] main t_env: 40320 / 500000
+[INFO 13:31:32] main Estimated time left: 6 hours, 46 minutes, 49 seconds. Time passed: 37 minutes, 0 seconds
+[INFO 13:31:53] main Recent Stats | t_env:      40320 | Episode:      896
+
+[INFO 13:35:42] main t_env: 45360 / 500000
+[INFO 13:35:42] main Estimated time left: 6 hours, 15 minutes, 51 seconds. Time passed: 41 minutes, 10 seconds
+[INFO 13:39:59] main t_env: 50400 / 500000
+[INFO 13:39:59] main Estimated time left: 6 hours, 23 minutes, 1 seconds. Time passed: 45 minutes, 28 seconds
+[INFO 13:40:17] main Recent Stats | t_env:      50400 | Episode:     1120
+
+[INFO 13:44:10] main t_env: 55440 / 500000
+[INFO 13:44:10] main Estimated time left: 6 hours, 8 minutes, 28 seconds. Time passed: 49 minutes, 39 seconds
+[INFO 13:48:20] main t_env: 60480 / 500000
+[INFO 13:48:20] main Estimated time left: 6 hours, 4 minutes, 0 seconds. Time passed: 53 minutes, 49 seconds
+[INFO 13:48:43] main Recent Stats | t_env:      60480 | Episode:     1344
+
+[INFO 13:52:40] main t_env: 65520 / 500000
+[INFO 13:52:40] main Estimated time left: 6 hours, 13 minutes, 23 seconds. Time passed: 58 minutes, 9 seconds
+[INFO 13:56:56] main t_env: 70560 / 500000
+[INFO 13:56:56] main Estimated time left: 6 hours, 3 minutes, 49 seconds. Time passed: 1 hours, 2 minutes, 25 seconds
+[INFO 13:57:15] main Recent Stats | t_env:      70560 | Episode:     1568
+
+[INFO 14:01:05] main t_env: 75600 / 500000
+[INFO 14:01:05] main Estimated time left: 5 hours, 48 minutes, 37 seconds. Time passed: 1 hours, 6 minutes, 34 seconds
+[INFO 14:05:24] main t_env: 80640 / 500000
+[INFO 14:05:24] main Estimated time left: 5 hours, 59 minutes, 18 seconds. Time passed: 1 hours, 10 minutes, 53 seconds
+[INFO 14:05:47] main Recent Stats | t_env:      80640 | Episode:     1792
+
+[INFO 14:09:42] main t_env: 85680 / 500000
+[INFO 14:09:42] main Estimated time left: 5 hours, 54 minutes, 1 seconds. Time passed: 1 hours, 15 minutes, 11 seconds
+[INFO 14:14:02] main t_env: 90720 / 500000
+[INFO 14:14:02] main Estimated time left: 5 hours, 51 minutes, 13 seconds. Time passed: 1 hours, 19 minutes, 31 seconds
+[INFO 14:14:25] main Recent Stats | t_env:      90720 | Episode:     2016
+
+[INFO 14:18:25] main t_env: 95760 / 500000
+[INFO 14:18:25] main Estimated time left: 5 hours, 52 minutes, 3 seconds. Time passed: 1 hours, 23 minutes, 54 seconds
+[INFO 14:22:56] main t_env: 100800 / 500000
+[INFO 14:22:56] main Estimated time left: 5 hours, 57 minutes, 34 seconds. Time passed: 1 hours, 28 minutes, 25 seconds
+[INFO 14:23:20] main Recent Stats | t_env:     100800 | Episode:     2240
+
+[INFO 14:27:23] main t_env: 105840 / 500000
+[INFO 14:27:23] main Estimated time left: 5 hours, 48 minutes, 26 seconds. Time passed: 1 hours, 32 minutes, 52 seconds
+[INFO 14:31:46] main t_env: 110880 / 500000
+[INFO 14:31:46] main Estimated time left: 5 hours, 37 minutes, 27 seconds. Time passed: 1 hours, 37 minutes, 14 seconds
+[INFO 14:32:03] main Recent Stats | t_env:     110880 | Episode:     2464
+
+[INFO 14:36:04] main t_env: 115920 / 500000
+[INFO 14:36:04] main Estimated time left: 5 hours, 28 minutes, 41 seconds. Time passed: 1 hours, 41 minutes, 33 seconds
+[INFO 14:40:25] main t_env: 120960 / 500000
+[INFO 14:40:25] main Estimated time left: 5 hours, 26 minutes, 48 seconds. Time passed: 1 hours, 45 minutes, 54 seconds
+[INFO 14:40:46] main Recent Stats | t_env:     120960 | Episode:     2688
+
+[INFO 14:44:45] main t_env: 126000 / 500000
+[INFO 14:44:45] main Estimated time left: 5 hours, 21 minutes, 47 seconds. Time passed: 1 hours, 50 minutes, 14 seconds

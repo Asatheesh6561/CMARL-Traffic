@@ -1,0 +1,85 @@
+{
+  "os":  "Linux-4.18.0-553.22.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python":  "3.9.0",
+  "startedAt":  "2024-11-08T20:42:03.241870Z",
+  "args":  [
+    "--config=MARL/configs/algs/maddpg.yaml",
+    "--cityflow-config=configs/cityflow/JN.yml",
+    "--constraint=phase_skip"
+  ],
+  "program":  "/nfshomes/anirudhs/CMARL-Traffic/main.py",
+  "codePath":  "main.py",
+  "git":  {
+    "remote":  "git@github.com:Asatheesh6561/CMARL-Traffic.git",
+    "commit":  "d93f9d6521da9769085a600e849a08304db3ee67"
+  },
+  "email":  "anirudh.satheesh@gmail.com",
+  "root":  "/nfshomes/anirudhs/CMARL-Traffic",
+  "host":  "gammagpu07.umiacs.umd.edu",
+  "username":  "anirudhs",
+  "executable":  "/cmlscratch/anirudhs/miniconda/envs/ctraffic/bin/python",
+  "codePathLocal":  "main.py",
+  "cpu_count":  32,
+  "cpu_count_logical":  32,
+  "gpu":  "NVIDIA RTX A5000",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "41922560000",
+      "used":  "13452439552"
+    }
+  },
+  "memory":  {
+    "total":  "269773135872"
+  },
+  "cpu":  {
+    "count":  32,
+    "countLogical":  32
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA RTX A5000",
+      "memoryTotal":  "25757220864",
+      "cudaCores":  8192,
+      "architecture":  "Ampere"
+    }
+  ],
+  "slurm":  {
+    "cluster_name":  "nexus",
+    "conf":  "/etc/slurm/slurm.conf",
+    "cpus_on_node":  "4",
+    "gpus_on_node":  "1",
+    "gtids":  "0",
+    "job_account":  "scavenger",
+    "job_cpus_per_node":  "4",
+    "job_end_time":  "1731357712",
+    "job_gid":  "17394",
+    "job_gpus":  "4",
+    "job_id":  "3297370",
+    "job_name":  "maddpg",
+    "job_nodelist":  "gammagpu07",
+    "job_num_nodes":  "1",
+    "job_partition":  "scavenger",
+    "job_qos":  "scavenger",
+    "job_start_time":  "1731098512",
+    "job_uid":  "17394",
+    "job_user":  "anirudhs",
+    "jobid":  "3297370",
+    "localid":  "0",
+    "mem_per_node":  "40960",
+    "nnodes":  "1",
+    "nodeid":  "0",
+    "nodelist":  "gammagpu07",
+    "nprocs":  "4",
+    "ntasks":  "4",
+    "prio_process":  "0",
+    "procid":  "0",
+    "submit_dir":  "/nfshomes/anirudhs/CMARL-Traffic/scripts",
+    "submit_host":  "tron63.umiacs.umd.edu",
+    "task_pid":  "1856526",
+    "tasks_per_node":  "4",
+    "topology_addr":  "gammagpu07",
+    "topology_addr_pattern":  "node"
+  },
+  "cudaVersion":  "12.4"
+}

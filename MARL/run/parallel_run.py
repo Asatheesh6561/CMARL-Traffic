@@ -22,6 +22,7 @@ from MARL.runners import REGISTRY as r_REGISTRY
 
 from MARL.utils.logging import Logger
 from MARL.utils.timehelper import time_left, time_str
+import pickle as pkl
 
 
 def run(_run, _config, _log):
@@ -154,6 +155,7 @@ def run_sequential(args, logger):
     model_save_time = 0
     visual_time = 0
     test_best_return = -np.inf
+    log_dicts = []
 
     start_time = time.time()
     last_time = start_time
@@ -178,15 +180,7 @@ def run_sequential(args, logger):
                 }
             )
             for k, v in train_stats.items():
-                if k not in [
-                    "individual_rewards",
-                    "total_reward",
-                    "n_episodes",
-                    "ep_length",
-                    "TimeLimit.truncated",
-                    "current_time",
-                ]:
-                    wandb_dict.update({f"train_{k}": v})
+                wandb_dict.update({f"train_{k}": v})
 
             if args.config["use_reward_normalization"]:
                 episode_batch = reward_scaler.transform(episode_batch)
@@ -238,15 +232,7 @@ def run_sequential(args, logger):
                 }
             )
             for k, v in test_stats.items():
-                if k not in [
-                    "individual_rewards",
-                    "total_rewards",
-                    "n_episodes",
-                    "ep_length",
-                    "TimeLimit.truncated",
-                    "current_time",
-                ]:
-                    wandb_dict.update({f"test_{k}": v})
+                wandb_dict.update({f"test_{k}": v})
             test_returns.append(test_old_return)
             if test_old_return > test_best_return:
                 test_best_return = test_old_return
@@ -255,6 +241,9 @@ def run_sequential(args, logger):
         # Step 4: Save Logs
         if args.enable_wandb:
             wandb.log(wandb_dict, step=runner.t_env)
+        else:
+            wandb_dict.update({"Time Step": runner.t_env})
+            log_dicts.append(wandb_dict)
         # Step 5: Finalize
         episode += args.config["batch_size_run"]
         if (runner.t_env - last_log_T) >= args.config["log_interval"]:
@@ -262,10 +251,8 @@ def run_sequential(args, logger):
             logger.print_recent_stats()
             last_log_T = runner.t_env
 
-    # Close the environments
-    runner.close_env()
-    val_runner.close_env()
-    test_runner.close_env()
+    with open(args.results_file, "wb") as f:
+        pkl.dump(log_dicts, f)
     logger.console_logger.info("Finished Training")
 
 
