@@ -128,9 +128,9 @@ class EpsilonGreedyActionSelector:
         self.args = args
 
         self.schedule = DecayThenFlatSchedule(
-            args.epsilon_start,
-            args.epsilon_finish,
-            args.epsilon_anneal_time,
+            args.config["epsilon_start"],
+            args.config["epsilon_finish"],
+            args.config["epsilon_anneal_time"],
             decay="linear",
         )
         self.epsilon = self.schedule.eval(0)

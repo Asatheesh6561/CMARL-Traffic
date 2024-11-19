@@ -80,6 +80,16 @@ class EpisodeRunner:
         else:
             return 0
 
+    def get_individual_cost(self, env_info):
+        if self.args.constraint == "PhaseSkip":
+            return env_info["individual_phase_skips"]
+        elif self.args.constraint == "GreenSkip":
+            return env_info["individual_green_skips"]
+        elif self.args.constraint == "GreenTime":
+            return env_info["individual_green_times"]
+        else:
+            return np.zeros_like(env_info["individual_green_times"])
+
     def run(self, test_mode=False):
         self.reset()
         self.test_rewards = []
@@ -147,6 +157,7 @@ class EpisodeRunner:
                 "terminated": [(terminated != env_info.get("episode_limit", False),)],
                 "individual_rewards": env_info["individual_rewards"],
                 "costs": [(self.get_cost(env_info),)],
+                "individual_costs": self.get_individual_cost(env_info),
             }
             if save_probs:
                 post_transition_data["probs"] = probs.unsqueeze(1).to("cpu").detach()

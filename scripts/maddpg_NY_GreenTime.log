@@ -67,3 +67,48 @@ q_taken_mean:              0.5039	target_mean:               0.3848	td_error_abs
 [INFO 14:40:29] main Recent Stats | t_env:      60480 | Episode:     1336
 agent_grad_norm:           0.0000	critic_grad_norm:         26.4008	critic_loss:               0.1065	pg_loss:                   0.0019
 q_taken_mean:              0.3600	target_mean:               0.2756	td_error_abs:              0.2488	
+[INFO 14:47:31] main t_env: 65520 / 500000
+[INFO 14:47:31] main Estimated time left: 10 hours, 47 minutes, 18 seconds. Time passed: 1 hours, 39 minutes, 48 seconds
+[INFO 14:55:21] main t_env: 70560 / 500000
+[INFO 14:55:21] main Estimated time left: 11 hours, 7 minutes, 53 seconds. Time passed: 1 hours, 47 minutes, 38 seconds
+[INFO 14:55:50] main Recent Stats | t_env:      70560 | Episode:     1560
+agent_grad_norm:           0.0000	critic_grad_norm:         43.2251	critic_loss:               0.1771	pg_loss:                  -0.4906
+q_taken_mean:             -0.1060	target_mean:              -0.0310	td_error_abs:              0.3307	
+[INFO 15:03:04] main t_env: 75600 / 500000
+[INFO 15:03:04] main Estimated time left: 10 hours, 48 minutes, 44 seconds. Time passed: 1 hours, 55 minutes, 21 seconds
+[INFO 15:10:47] main t_env: 80640 / 500000
+[INFO 15:10:47] main Estimated time left: 10 hours, 42 minutes, 46 seconds. Time passed: 2 hours, 3 minutes, 4 seconds
+[INFO 15:11:16] main Recent Stats | t_env:      80640 | Episode:     1784
+agent_grad_norm:           0.0000	critic_grad_norm:         53.2243	critic_loss:               0.2790	pg_loss:                  -1.2728
+q_taken_mean:             -0.7908	target_mean:              -0.7300	td_error_abs:              0.4117	
+[INFO 15:18:16] main t_env: 85680 / 500000
+[INFO 15:18:16] main Estimated time left: 10 hours, 14 minutes, 29 seconds. Time passed: 2 hours, 10 minutes, 33 seconds
+[INFO 15:25:56] main t_env: 90720 / 500000
+[INFO 15:25:56] main Estimated time left: 10 hours, 23 minutes, 7 seconds. Time passed: 2 hours, 18 minutes, 13 seconds
+[INFO 15:26:24] main Recent Stats | t_env:      90720 | Episode:     2008
+agent_grad_norm:           0.0000	critic_grad_norm:         67.2857	critic_loss:               0.3151	pg_loss:                  -2.0757
+q_taken_mean:             -1.5199	target_mean:              -1.5245	td_error_abs:              0.4553	
+[INFO 15:33:28] main t_env: 95760 / 500000
+[INFO 15:33:28] main Estimated time left: 10 hours, 4 minutes, 20 seconds. Time passed: 2 hours, 25 minutes, 45 seconds
+[INFO 15:41:01] main t_env: 100800 / 500000
+[INFO 15:41:01] main Estimated time left: 9 hours, 57 minutes, 59 seconds. Time passed: 2 hours, 33 minutes, 18 seconds
+[INFO 15:41:31] main Recent Stats | t_env:     100800 | Episode:     2232
+agent_grad_norm:           0.0000	critic_grad_norm:         69.8375	critic_loss:               0.3534	pg_loss:                  -3.0148
+q_taken_mean:             -2.5113	target_mean:              -2.4365	td_error_abs:              0.4913	
+[INFO 15:48:37] main t_env: 105840 / 500000
+[INFO 15:48:37] main Estimated time left: 9 hours, 54 minutes, 25 seconds. Time passed: 2 hours, 40 minutes, 54 seconds
+[INFO 15:56:20] main t_env: 110880 / 500000
+[INFO 15:56:20] main Estimated time left: 9 hours, 54 minutes, 48 seconds. Time passed: 2 hours, 48 minutes, 36 seconds
+[INFO 15:56:48] main Recent Stats | t_env:     110880 | Episode:     2456
+agent_grad_norm:           0.0000	critic_grad_norm:        133.2508	critic_loss:               0.8639	pg_loss:                  -4.3036
+q_taken_mean:             -3.8290	target_mean:              -3.4739	td_error_abs:              0.7553	
+[INFO 16:04:06] main t_env: 115920 / 500000
+[INFO 16:04:06] main Estimated time left: 9 hours, 52 minutes, 37 seconds. Time passed: 2 hours, 56 minutes, 23 seconds
+[INFO 16:11:45] main t_env: 120960 / 500000
+[INFO 16:11:45] main Estimated time left: 9 hours, 34 minutes, 47 seconds. Time passed: 3 hours, 4 minutes, 2 seconds
+[INFO 16:12:14] main Recent Stats | t_env:     120960 | Episode:     2680
+agent_grad_norm:           0.0000	critic_grad_norm:        119.6229	critic_loss:               0.8113	pg_loss:                  -5.3795
+q_taken_mean:             -4.9172	target_mean:              -4.6499	td_error_abs:              0.6981	
+[INFO 16:19:24] main t_env: 126000 / 500000
+[INFO 16:19:24] main Estimated time left: 9 hours, 28 minutes, 39 seconds. Time passed: 3 hours, 11 minutes, 41 seconds
+slurmstepd: error: *** JOB 3323812 ON tron55 CANCELLED AT 2024-11-12T16:26:00 ***

@@ -14,14 +14,14 @@ class DQNMAC:
         self.n_actions = args.n_actions
         self.args = args
         self.input_seq_str = (
-            f"{args.actor_input_seq_str}_{self.n_agents}_{self.n_actions}"
+            f"{args.config['actor_input_seq_str']}_{self.n_agents}_{self.n_actions}"
         )
 
         input_shape = get_actor_input_shape(self.input_seq_str, scheme)
         self._build_agents(input_shape)
-        self.agent_output_type = args.agent_output_type
+        self.agent_output_type = args.config["agent_output_type"]
 
-        self.action_selector = action_REGISTRY[args.action_selector](args)
+        self.action_selector = action_REGISTRY[args.config["action_selector"]](args)
 
         self.hidden_states = None
 
@@ -32,13 +32,21 @@ class DQNMAC:
         avail_actions = ep_batch["avail_actions"][:, t_ep]
         agent_outputs = self.forward(ep_batch, t_ep, t_env, test_mode=test_mode)
 
-        if self.args.use_n_lambda:
+        if self.args.config["use_n_lambda"]:
             agent_outputs = agent_outputs.reshape(
-                agent_outputs.shape[0], agent_outputs.shape[1], self.args.n_lambda, -1
+                agent_outputs.shape[0],
+                agent_outputs.shape[1],
+                self.args.config["n_lambda"],
+                -1,
             )
             # agent_outputs.shape = (batch_size, #SKU, #lambda, #action)
-            gather_indices = lbda_indices.view(self.args.batch_size, 1, 1, 1).expand(
-                self.args.batch_size, agent_outputs.shape[1], 1, agent_outputs.shape[-1]
+            gather_indices = lbda_indices.view(
+                self.args.config["batch_size"], 1, 1, 1
+            ).expand(
+                self.args.config["batch_size"],
+                agent_outputs.shape[1],
+                1,
+                agent_outputs.shape[-1],
             )
             agent_outputs = torch.gather(
                 agent_outputs, dim=2, index=gather_indices
@@ -84,7 +92,7 @@ class DQNMAC:
         )
 
     def _build_agents(self, input_shape):
-        self.agent = agent_REGISTRY[self.args.agent](input_shape, self.args)
+        self.agent = agent_REGISTRY[self.args.config["agent"]](input_shape, self.args)
 
     def _build_inputs(self, batch, t):
         # Assumes homogenous agents with flat observations.
@@ -92,12 +100,12 @@ class DQNMAC:
         bs = batch.batch_size
         inputs = []
         inputs.append(batch["obs"][:, t])  # b1av
-        if self.args.obs_last_action:
+        if self.args.config["obs_last_action"]:
             if t == 0:
                 inputs.append(torch.zeros_like(batch["actions_onehot"][:, t]))
             else:
                 inputs.append(batch["actions_onehot"][:, t - 1])
-        if self.args.obs_agent_id:
+        if self.args.config["obs_agent_id"]:
             inputs.append(
                 torch.eye(self.n_agents, device=batch.device)
                 .unsqueeze(0)
@@ -109,9 +117,9 @@ class DQNMAC:
 
     def _get_input_shape(self, scheme):
         input_shape = scheme["obs"]["vshape"]
-        if self.args.obs_last_action:
+        if self.args.config["obs_last_action"]:
             input_shape += scheme["actions_onehot"]["vshape"][0]
-        if self.args.obs_agent_id:
+        if self.args.config["obs_agent_id"]:
             input_shape += self.n_agents
 
         return input_shape

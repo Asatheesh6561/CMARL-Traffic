@@ -2,6 +2,10 @@ CityFlow/
 Environment/data/
 logs/
 results/
+wandb/
+scripts/
 __pycache__
 local_results
 data.tgz
+*.pyc
+google_results

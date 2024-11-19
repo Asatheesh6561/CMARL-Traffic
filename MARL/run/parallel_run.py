@@ -241,9 +241,8 @@ def run_sequential(args, logger):
         # Step 4: Save Logs
         if args.enable_wandb:
             wandb.log(wandb_dict, step=runner.t_env)
-        else:
-            wandb_dict.update({"Time Step": runner.t_env})
-            log_dicts.append(wandb_dict)
+        wandb_dict.update({"Time Step": runner.t_env})
+        log_dicts.append(wandb_dict)
         # Step 5: Finalize
         episode += args.config["batch_size_run"]
         if (runner.t_env - last_log_T) >= args.config["log_interval"]:

@@ -106,6 +106,7 @@ def run_sequential(args, logger):
         "reward": {"vshape": (1,)},
         "costs": {"vshape": (1,)},
         "individual_rewards": {"vshape": (1,), "group": "agents"},
+        "individual_costs": {"vshape": (1,), "group": "agents"},
         "total_reward": {"vshape": (1,)},
         "terminated": {"vshape": (1,), "dtype": torch.uint8},
     }
@@ -239,9 +240,8 @@ def run_sequential(args, logger):
         # Step 4: Log
         if args.enable_wandb:
             wandb.log(wandb_dict, step=runner.t_env)
-        else:
-            wandb_dict.update({"Time Step": runner.t_env})
-            log_dicts.append(wandb_dict)
+        wandb_dict.update({"Time Step": runner.t_env})
+        log_dicts.append(wandb_dict)
 
         # Step 5: Finalize
         episode += args.config["batch_size_run"]

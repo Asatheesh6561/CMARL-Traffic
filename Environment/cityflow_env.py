@@ -777,7 +777,7 @@ class CityFlowEnv:
 
     def get_green_times(self):
         return [
-                np.mean([(gt < 40) for gt in inter.TS.green_times if gt > 0 and l not in {2, 3, 6, 10}])
+                np.mean([(gt < 40) for l, gt in enumerate(inter.TS.green_times) if gt > 0 and l not in {2, 3, 6, 10}])
                 for inter in self.list_intersection
             ]
       
@@ -789,7 +789,7 @@ class CityFlowEnv:
 
     def get_green_skips(self):
         return [
-                np.mean([(gs < 4) for gs in inter.TS.green_skips])
+                np.mean([(gs < 4) for l, gs in enumerate(inter.TS.green_skips) if l not in {2, 3, 6, 10}])
                 for inter in self.list_intersection
             ]
 
@@ -820,9 +820,9 @@ class CityFlowEnv:
             ),
             "individual_rewards": all_reward,
             "total_reward": all_reward.sum(),
-            "green_times": self.get_green_times(),
-            "phase_skips": self.get_phase_skips(),
-            "green_skips": self.get_green_skips(),
+            "green_times": np.mean(self.get_green_times()),
+            "phase_skips": np.mean(self.get_phase_skips()),
+            "green_skips": np.mean(self.get_green_skips()),
             "individual_green_times": np.array(self.get_green_times()),
             "individual_phase_skips": np.array(self.get_phase_skips()),
             "individual_green_skips": np.array(self.get_green_skips()),
