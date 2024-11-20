@@ -19,16 +19,16 @@ conda install -c conda-forge libstdcxx-ng
 
 ## Run
 
-To run the algorithm on the HZ environment:
+As an example, to run MAPPO on the HZ environment:
 ```bash
-python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo2c.yaml
+python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo.yaml
 ```
-
+Run different algorithms by substituting the corresponding .yml files in the arguments.
 
 ## Environment
 
 The definition of the gym environment is in `Environment/cityflow_env.py`. It runs in another 
-process managed by `[MARL/run/episode_run.py]`.
+process managed by the environment run files in `MARL/run`.
 
 ## Dataset
 
