@@ -4,21 +4,21 @@ import os
 import numpy as np
 import seaborn as sns
 
-constraint = "None"
-env = "NY"
+constraint = "GreenTime"
+env = "JN"
 results_folder = "/cmlscratch/anirudhs/ctraffic/results"
 results_prefixes = [
     f"ippo_{env}_{constraint}",
     f"mappo_{env}_{constraint}",
-    f"mappo2c_{env}_{constraint}",
+    f"mappolce_{env}_{constraint}",
     f"qtran_{env}_{constraint}",
 ]
 
 
 def plot_all_runs(prefix_list, key):
-    colors = ["black", "red", "blue", "green", "orange", "purple"]
-    plt.figure()  # Create a single figure for all plots
-    sns.set_style("whitegrid")  # Set Seaborn style once for all subplots
+    colors = ["red", "blue", "green", "orange", "purple"]
+    plt.figure()
+    sns.set_style("whitegrid")
 
     for i, prefix in enumerate(prefix_list):
         results_files = [f for f in os.listdir(results_folder) if f.startswith(prefix)]
@@ -38,12 +38,7 @@ def plot_all_runs(prefix_list, key):
             for result in results_list
             if len([i[key] for i in result if key in i]) == max_length
         ]
-        mean_rewards = np.array(
-            [[d[key] for d in r if key in d] for r in longest_results_list]
-        ).mean(axis=1)
-        sorted_indices = np.argsort(mean_rewards)
-        sorted_results_list = [longest_results_list[i] for i in sorted_indices]
-        results_list = sorted_results_list[: min(3, len(sorted_results_list))]
+        results_list = longest_results_list[: min(3, len(longest_results_list))]
 
         # Prepare data for plotting
         timesteps = [d["Time Step"] for d in results_list[0] if key in d]
