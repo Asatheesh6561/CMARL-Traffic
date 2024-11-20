@@ -19,10 +19,11 @@ conda install -c conda-forge libstdcxx-ng
 
 ## Run
 
-For training:
+To run the algorithm on the HZ environment:
 ```bash
-python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/maa2cc.yaml
+python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo2c.yaml
 ```
+
 
 ## Environment
 
@@ -31,7 +32,10 @@ process managed by `[MARL/run/episode_run.py]`.
 
 ## Dataset
 
-You can find the datasets in `Environment/data`, which has `SH1`, `SH2`, `NY`, `JN`, and `HZ` after extracting the `data.tgz` tarball. You can also find the original data files on the [COLight](https://github.com/wingsweihua/colight) github page.
+We provide the HZ, JN, and NY datasets in the `data.tgz` tarball. You can also find the original dataset files on the [COLight](https://github.com/wingsweihua/colight) github page. To use them, run
+```
+tar -zxvf Environment/data.tar
+```
 
 ## Arguments and Configs
 
