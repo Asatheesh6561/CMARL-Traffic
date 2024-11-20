@@ -19,11 +19,11 @@ conda install -c conda-forge libstdcxx-ng
 
 ## Run
 
-As an example, to run MAPPO on the HZ environment:
+As an example, to run MAPPO on the HZ environment with the PhaseSkip constraint:
 ```bash
-python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo.yaml
+python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo.yaml --constraint=PhaseSkip
 ```
-Run different algorithms by substituting the corresponding .yml files in the arguments.
+Run different algorithms by substituting the corresponding .yml files in the arguments. The constraint choices are listed in `Environment/utils/arguments.py`.
 
 ## Environment
 
