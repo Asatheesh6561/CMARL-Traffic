@@ -9,3 +9,5 @@ local_results
 data.tgz
 *.pyc
 google_results
+results_copy
+plots
