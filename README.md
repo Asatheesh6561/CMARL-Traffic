@@ -23,6 +23,9 @@ As an example, to run MAPPO on the HZ environment with the PhaseSkip constraint:
 ```bash
 python main.py --cityflow-config=configs/cityflow/HZ.yml --config=MARL/configs/algs/mappo.yaml --constraint=PhaseSkip
 ```
+
+You may need to change the `local_results_path` in config files, as well as `arg['results_path']` in `main.py`.
+
 Run different algorithms by substituting the corresponding .yml files in the arguments. The constraint choices are listed in `Environment/utils/arguments.py`.
 
 ## Environment
