@@ -9,12 +9,14 @@ results_combined = {}
 for f in os.listdir(results_folder):
     algo, env, constraint, *_ = f.split("_")
     if algo not in {'mappo', 'ippo', 'mappolce', 'qtran'}: continue
+    if constraint == 'None': continue
     if not env in results_combined: results_combined[env] = {}
     if not constraint in results_combined[env]: results_combined[env][constraint] = {}
     if not algo in results_combined[env][constraint]: results_combined[env][constraint][algo] = []
     with open(f"{results_folder}/{f}", "rb") as file:
             results_combined[env][constraint][algo].append(pkl.load(file))
 
+env_to_idx = {'HZ': 0, 'JN': 1, 'NY': 2}
 constraint_to_idx = {'None': 0, 'GreenTime': 1, 'PhaseSkip': 2, 'GreenSkip': 3}
 algo_to_idx = {'mappolce': 0, 'mappo': 1, 'qtran': 2, 'ippo': 3}
 
@@ -23,10 +25,13 @@ def plot_all_runs(results_combined, key, title_key):
     fig, axs = plt.subplots(len(results_combined), len(results_combined['HZ']))
     fig.set_figwidth(25)
     fig.set_figheight(15)
-    for j, env in enumerate(results_combined):
+    for env in results_combined:
+        j = env_to_idx[env]
         for constraint in results_combined[env]:
+            k = constraint_to_idx[constraint] - 1
             colors = ["black", "red", "blue", "green", "orange", "purple"]
             for algo in results_combined[env][constraint]:
+                i = algo_to_idx[algo]
                 results_list = results_combined[env][constraint][algo] 
                 # only include the longest runs
                 results_list = [r for r in results_list if len(r) == len(max(results_list, key=len))]
@@ -52,15 +57,16 @@ def plot_all_runs(results_combined, key, title_key):
                 max_reward = np.max(smoothed_rewards, axis=0)
 
                 # Plot the average reward and shaded region for min-max
-                axs[j][constraint_to_idx[constraint]].plot(timesteps, avg_reward, color=colors[algo_to_idx[algo]], label=f"{algo}")
-                axs[j][constraint_to_idx[constraint]].fill_between(timesteps, min_reward, max_reward, alpha=0.2, color=colors[algo_to_idx[algo]])
+                axs[j][k].plot(timesteps, avg_reward, color=colors[i], label=f"{algo}")
+                axs[j][k].fill_between(timesteps, min_reward, max_reward, alpha=0.2, color=colors[i])
 
-            #axs[j][constraint_to_idx[constraint]].legend()
-            #axs[j][constraint_to_idx[constraint]].set_xlabel("Time Step (100,000s)")
-            #axs[j][constraint_to_idx[constraint]].set_ylabel(title_key)
-            axs[j][constraint_to_idx[constraint]].set_title(f"{constraint} constraint in {env}" if constraint != 'None' else
+            #axs[j][k].legend()
+            #axs[j][k].set_xlabel("Time Step (100,000s)")
+            if k == 0:
+                 axs[j][k].set_ylabel(title_key, fontsize=20)
+            axs[j][k].set_title(f"{constraint} constraint in {env}" if constraint != 'None' else
                                 f"No constraint in {env}", fontsize=20)
-    plt.suptitle(f"Averaged {title_key} vs. Time Step (100,000s)", fontsize=30)
+    plt.suptitle(f"Averaged {title_key} vs. Time Step ($10^5$s)", fontsize=30)
     plt.tight_layout(pad=1)
     fig.subplots_adjust(top=0.90, bottom=0.075)
     handles, labels = axs[0][0].get_legend_handles_labels()
