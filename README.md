@@ -4,7 +4,7 @@ Source code of "A Constrained Multi-Agent Reinforcement Learning Approach to Tra
 
 # Usage
 
-We use [CityFlow](https://github.com/zyr17/CityFlow) as traffic simulator. Note that we use a a forked version of the original CityFlow that was originally created for [UniLight](https://github.com/zyr17/UniLight). This moves some python code to the C++ backend. 
+We use [CityFlow](https://github.com/zyr17/CityFlow) as traffic simulator.
 
 To run our code, use python 3.9.20 in a conda environment.
 
