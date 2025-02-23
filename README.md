@@ -13,7 +13,7 @@ To run our code, use python 3.9.20 in a conda environment.
 git clone git@github.com:zyr17/CityFlow.git
 cd CityFlow && pip install . --upgrade && cd ..
 git clone git@github.com:Asatheesh6561/CMARL-Traffic.git
-cd CMARL-Traffic &&  pip install -r requirements.txt
+cd CMARL-Traffic &&  conda install env create -f environment.yaml
 conda install -c conda-forge libstdcxx-ng
 ```
 
