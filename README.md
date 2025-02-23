@@ -10,10 +10,12 @@ To run our code, use python 3.9.20 in a conda environment.
 
 ## Build
 ```bash
+conda install env create -f environment.yaml
+conda activate ctraffic
 git clone git@github.com:zyr17/CityFlow.git
 cd CityFlow && pip install . --upgrade && cd ..
 git clone git@github.com:Asatheesh6561/CMARL-Traffic.git
-cd CMARL-Traffic &&  conda install env create -f environment.yaml
+cd CMARL-Traffic
 conda install -c conda-forge libstdcxx-ng
 ```
 
